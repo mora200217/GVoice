@@ -5,8 +5,8 @@
 |----------------------------------|-----------------------------------------------------------|
 | Iván Mauricio Hernández Triana   | [elestrategaactual](https://github.com/elestrategaactual) | 
 | Juan Fernando Ramírez Montes     |    [jramirezmon](https://github.com/jramirezmon)          |
-| Andres mauricio morales          |    [jramirezmon](https://github.com/jramirezmon)          |
-| migel                            |    [jramirezmon](https://github.com/jramirezmon)          |
+| Andres mauricio morales          |    [mora200217](https://github.com/@mora200217)          |
+| migel                            |    [mora200217](https://github.com/@mora200217)          |
 
 
 # Introducción
@@ -26,5 +26,3 @@
 
 
 # Requisitos
-
-# Trabajo futuro
