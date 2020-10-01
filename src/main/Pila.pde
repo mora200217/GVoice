@@ -1,17 +1,18 @@
- interface ArrayGen<T> {
+ //implementacion de pila generica usando array
+ interface PilaGen<T> {
   abstract  public boolean vacio();
   abstract  public boolean lleno();
   abstract public T pop();
    abstract public void push(T item);
 }
-class ArrayPropio<T> implements  ArrayGen<T>{
+public class Pila<T> implements  PilaGen<T>{
     private static final int n =4;
     private int limsup;
     private T[] arr;
-    public ArrayPropio(){
+    public Pila(){
     this(n);
     }
-    public ArrayPropio(int n) {
+    public Pila(int n) {
         limsup = 0;
         arr =(T[]) new Object[n];
     }
