@@ -1,26 +1,26 @@
- //implementacion de cola generica usando array
- interface ColaGen<T> {
+//implementacion de cola generica usando array
+interface ColaGen<T> {
   abstract  public boolean vacio();
   abstract  public boolean lleno();
   abstract public int numAdentro();
   abstract public T atender();
-   abstract public void meter(T item);
-   
+  abstract public void meter(T item);
 }
-public class Cola<T> implements  ColaGen<T>{
+public class Cola<T> implements  ColaGen<T> {
   private static final int N = 5;
   private int comienzo, fin, contador;
   private T[] qarray;
-  public Cola(){
+  public Cola() {
     this(N);
-    }
+  }
   public Cola(int N) {
     comienzo = fin = contador = 0;
     qarray = (T[]) new Object[N];
   }
+  //metodo dequeue
   public T atender() {
     T item = null;
-    if(vacio())
+    if (vacio())
       throw new RuntimeException("la cola esta vacia");
     else {
       item = qarray[comienzo];
@@ -29,8 +29,9 @@ public class Cola<T> implements  ColaGen<T>{
     }
     return item;
   }
+  //metodo enqueue
   public void meter(T item) {
-    if(lleno())
+    if (lleno())
       throw new RuntimeException("no hay espacio");
     else {
       qarray[fin] = item;
@@ -38,12 +39,14 @@ public class Cola<T> implements  ColaGen<T>{
       contador++;
     }
   }
+  //booleanos de control
   public boolean vacio() {
     return contador <= 0;
   }
   public boolean lleno() {
     return contador >= N;
   }
+//contador de elementos en la cola
   public int numAdentro() {
     return contador;
   }
