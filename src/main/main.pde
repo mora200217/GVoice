@@ -5,7 +5,7 @@ void setup(){
      
     size(700,500);
     surface.setTitle(APP_NAME);
-    background(255); 
+    background(255);
 }
 
 // -----------------------------------------

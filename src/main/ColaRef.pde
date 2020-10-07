@@ -1,5 +1,10 @@
-//implementacion de cola generica usando reff
-public class ColaRef<T> implements  ColaGen<T> {
+/**
+ * Cola Referencias ( RefQueue )
+ * 
+ *  Estructura basada en Nodos enlazados, 
+ *  por referencias. 
+ */
+public class RefQueue<T> implements  QueueGen<T> {
   private SingleNode comienzo, fin;
   private int contador;
   //se crea una clase interna como explico el profesor para que solo la pila pueda acceder al nodo
@@ -8,16 +13,21 @@ public class ColaRef<T> implements  ColaGen<T> {
     T Data;
     SingleNode next;
   }
-  public ColaRef() {
+  public RefQueue() {
     comienzo = null;
     fin= null;
     contador = 0;
   }
-  //metodo dequeue
-  public T atender() {
+  /**
+   *  saca un elemento.
+   *  Maneja Excepción de espacio.
+   *  @param {}.
+   *  @return{Type} - Éxito del proceso. 
+   **/
+  public T deQueue() {
     T data = comienzo.Data;
     comienzo = comienzo.next;
-    if (vacio()) 
+    if (empty()) 
     {
       fin = null;
       throw new RuntimeException("la cola esta vacia");
@@ -25,13 +35,17 @@ public class ColaRef<T> implements  ColaGen<T> {
     contador--;
     return data;
   }
-  //metodo enqueue
-  public void meter(T item) {
+  /**
+   *  inserta un elemento.
+   *  @param {Type}.
+   *  @return{} -Exito del proceso. 
+   **/
+  public void enQueue(T item) {
     SingleNode memo = fin;
     fin = new SingleNode();
     fin.Data = item;
     fin.next = null;
-    if (vacio()) 
+    if (empty()) 
     {
       comienzo= fin;
     } else 
@@ -40,15 +54,28 @@ public class ColaRef<T> implements  ColaGen<T> {
     }
     contador++;
   }
-  //booleanos de control
-  public boolean vacio() {
+  /**
+   *  retorna si la cola esta vacia o no.
+   *  @param {}.
+   *  @return{Boolean} -esta vacia. 
+   **/
+  public boolean empty() {
     return (comienzo==null);
   }
-  public boolean lleno() {
+  /**
+   *  retorna si la cola esta "llena" al ser por listas nunca se llena.
+   *  @param {}.
+   *  @return{Boolean} -esta llena. 
+   **/
+  public boolean full() {
     return(false);
   }
-  //contador de elementos en la cola
-  public int numAdentro() {
+  /**
+   *  retorna la cantidad de elementos en la cola.
+   *  @param {}.
+   *  @return{Intiger} -numero elementos en la cola. 
+   **/
+  public int numInside() {
     return contador;
   }
 }

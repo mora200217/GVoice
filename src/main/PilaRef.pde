@@ -1,5 +1,10 @@
-//implementacion de cola generica usando reff
-public class PilaRef<T> implements  PilaGen<T> {
+/**
+ * Pila Ref ( RefStack )
+ * 
+ *  Estructura basada en Nodos enlazados, 
+ *  por referencias. 
+ */
+public class RefStack<T> implements  StackGen<T> {
   private SingleNode head;
   //se crea una clase interna como explico el profesor para que solo la pila pueda acceder al nodo 
   private class SingleNode
@@ -7,31 +12,48 @@ public class PilaRef<T> implements  PilaGen<T> {
     T Data;
     SingleNode next;
   }
-  public PilaRef() {
+  public RefStack() {
     head = null;
   }
-  //metodo de sacar de la pila
+  /**
+   *  saca un elemento.
+   *  Maneja Excepción de espacio.
+   *  @param {}.
+   *  @return{Type} - Éxito del proceso. 
+   **/
   public T pop() {
-    if(vacio()){
+    if (empty()) {
       throw new RuntimeException("la pila esta vacia");
     }
     T item = head.Data;
     head = head.next;
     return item;
   }
-  //metodo de meter en la pila
+  /**
+   *  inserta un elemento.
+   *  @param {Type}.
+   *  @return{} -Exito del proceso. 
+   **/
   public void push(T item) {
     SingleNode memo = head;
     head = new SingleNode();
     head.Data = item;
     head.next = memo;
   }
-  //booleanos de control
-  //este es para poder usarf la interfas del anterior por que nunca se va a llenar con reff
-  public boolean lleno() {
+  /**
+   *  retorna si la cola esta "llena" al ser por listas nunca se llena.
+   *  @param {}.
+   *  @return{Boolean} -esta llena. 
+   **/
+  public boolean full() {
     return(false);
   }
-  public boolean vacio() {
+  /**
+   *  retorna si la pila esta vacia o no.
+   *  @param {}.
+   *  @return{Boolean} -esta vacia. 
+   **/
+  public boolean empty() {
     return(head==null);
   }
 }
