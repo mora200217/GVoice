@@ -68,7 +68,7 @@ public class Queue<T> implements  QueueGen<T> {
    *  @return{Boolean} -esta llena. 
    **/
   public boolean full() {
-    return contador >= N;
+    return contador >= qarray.length;
   }
   /**
    *  retorna la cantidad de elementos en la cola.
