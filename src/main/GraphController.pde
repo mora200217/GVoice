@@ -72,7 +72,7 @@ class GraphController {
       puntos=memoria.getPoints(this);
       push();
       stroke(random(0,255),random(0,255),random(0,255));
-      translate(this.axis.getOrigin().x-250,this.axis.getOrigin().y);
+      translate(this.axis.getOrigin().x,this.axis.getOrigin().y);
         rotate(radians(180));
         scale(-1,1);
       for (int i=0; i<puntos.length-1; i++) {

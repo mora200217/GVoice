@@ -2,6 +2,11 @@
 String APP_NAME = "GVoice";  
 int keyVal = 0;  // 1 Ivan 2 Juanfer 3 Miguel 4 Morales
 GraphController perrohp; 
+float [] hola={0,-10,1};
+  Polinomio f1=new Polinomio(hola,2);
+  Polinomio f2=new Polinomio(1);
+  Polinomio f3=new Polinomio(3);
+  
 // -----------------------------------------
 void setup() {
 
@@ -9,10 +14,7 @@ void setup() {
   surface.setTitle(APP_NAME);
   perrohp =new  GraphController(width, height);
   perrohp.setOrigin(width/2, height/2);
-  float [] hola={1,1,1};
-  Polinomio f1=new Polinomio(hola,2);
-  Polinomio f2=new Polinomio(1);
-  Polinomio f3=new Polinomio(3);
+  
   perrohp.addElement(f1);
   perrohp.addElement(f2);
    perrohp.addElement(f3);
@@ -46,6 +48,7 @@ void draw() {
   //  break; 
     
   //}
-  
-  
+}
+void mousePressed(){
+  f1.coef[0]+=1;
 }

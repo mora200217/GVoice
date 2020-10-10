@@ -23,6 +23,7 @@ public class Polinomio implements Element {
   }
   public Polinomio(float[] coeft, int gradot) {
     grado=gradot;
+    this.delta=1;
     if (grado < 0)
       throw new RuntimeException("el grado ingresado no es valido");
     else {
@@ -30,7 +31,7 @@ public class Polinomio implements Element {
         throw new RuntimeException("el numero de indices debe concidir con el grado");
     }
     coef = new float[grado+1];
-    for (int i = 0; i <= grado-1; i++) {
+    for (int i = 0; i <= grado; i++) {
       coef[i] = coeft[i];
     }
   }
@@ -45,6 +46,7 @@ public class Polinomio implements Element {
   }
   public float[] getPoints(GraphController h) {
     float tamal=h.getDimension().x;
+    float centro=h.axis.getOrigin().x;
     float[]points= new float [ceil(tamal/this.delta)];
     for(float i=0;i<tamal;i+=delta){
       points[int(i/delta)]=this.y(i-tamal/2);
