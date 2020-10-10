@@ -60,7 +60,7 @@ public class RefQueue<T> implements  QueueGen<T> {
    *  @return{Boolean} -esta vacia. 
    **/
   public boolean empty() {
-    return (comienzo==null);
+    return (contador==0);
   }
   /**
    *  retorna si la cola esta "llena" al ser por listas nunca se llena.
