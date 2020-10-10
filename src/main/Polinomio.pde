@@ -1,6 +1,6 @@
 //implementacion de la base para manejar polinomios.
 public class Polinomio {
-  private int[] coef;
+  private float[] coef;
   private int grado;
   public Polinomio(int gradot) {
     grado=gradot;
@@ -8,14 +8,14 @@ public class Polinomio {
       //por si se ponen de mamones con grados negativos.
       throw new RuntimeException("el grado ingresado no es valido");
     } else {
-      coef = new int[grado++];
+      coef = new float[grado++];
       //genero un array almacenando los coeficientes que como no pasaron van a ser 0.
       for (int i = 0; i <= grado; i++) {
         coef[i] = 0;
       }
     }
   }
-  public Polinomio(int[] coeft, int gradot) {
+  public Polinomio(float[] coeft, int gradot) {
     grado=gradot;
     if (grado < 0) {
       throw new RuntimeException("el grado ingresado no es valido");
@@ -23,7 +23,7 @@ public class Polinomio {
       if (coeft.length-1!=grado) {
         throw new RuntimeException("el numero de indices debe concidir con el grado");
       }
-      coef = new int[grado+=1];
+      coef = new float[grado+=1];
       for (int i = 0; i <= grado-1; i++) {
         coef[i] = coeft[i];
       }

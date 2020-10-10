@@ -135,11 +135,11 @@ public class LinkedList {
   }
 
   /**
-  * Agrega un nodo después de la posición indicada. 
-  *
-  * @param { Node } node - nodo a agregar. 
-  * @param { int } i -  posición previa del nodo a agregar. 
-  */
+   * Agrega un nodo después de la posición indicada. 
+   *
+   * @param { Node } node - nodo a agregar. 
+   * @param { int } i -  posición previa del nodo a agregar. 
+   */
   void pushAfter(Node node, int i) {
     Node ref = this.getFromPosition(i); 
 
@@ -155,11 +155,11 @@ public class LinkedList {
   }
 
   /**
-  * Agrega un nodo antes de la posición indicada. 
-  *
-  * @param { Node } node - nodo a agregar. 
-  * @param { int } i -  posición posterior del nodo a agregar. 
-  **/ 
+   * Agrega un nodo antes de la posición indicada. 
+   *
+   * @param { Node } node - nodo a agregar. 
+   * @param { int } i -  posición posterior del nodo a agregar. 
+   **/
   void pushBefore(Node node, int i) {
     // Si es el primero 
     if (i == 0)

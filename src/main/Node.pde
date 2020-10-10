@@ -1,30 +1,29 @@
-class Node<T>{
-    public T value; 
-    Node next; Node prev; 
-    
-    public Node(T value){
-        this.value = value; 
-    }
+class Node<T> {
+  public T value; 
+  Node next; 
+  Node prev; 
 
-    public  Node(){
-        this.value = null; 
-    }
+  public Node(T value) {
+    this.value = value;
+  }
 
-    public void setNext(Node newRef){
-        this.next = newRef; 
-    }
+  public  Node() {
+    this.value = null;
+  }
 
-    public Node getNext(){
-        return this.next; 
-    }
+  public void setNext(Node newRef) {
+    this.next = newRef;
+  }
 
-    public void setPrev(Node newPrev){
-        this.prev = newPrev; 
-    }
+  public Node getNext() {
+    return this.next;
+  }
 
-    public Node getPrev(){
-        return this.prev; 
-    }
+  public void setPrev(Node newPrev) {
+    this.prev = newPrev;
+  }
 
-
+  public Node getPrev() {
+    return this.prev;
+  }
 }

@@ -68,11 +68,11 @@ class GraphController {
 
   public boolean isMouseOver() {
     return true; 
- /*   if (2 * abs(mouseX - this.origin.x) < this.dimension.x && 
-      2 * abs(mouseY - this.origin.y) < this.dimension.y) {
-      return true;
-    }
-    return false;*/
+    /*   if (2 * abs(mouseX - this.origin.x) < this.dimension.x && 
+     2 * abs(mouseY - this.origin.y) < this.dimension.y) {
+     return true;
+     }
+     return false;*/
   }
 
 
@@ -95,7 +95,7 @@ class GraphController {
     // Mouse drag
     if ( this.mouseDragged() ) {
       dragPositions.push(new PVector(mouseX, mouseY));
-    } else if(!dragPositions.empty() && dragPositions.limsup < 2){
+    } else if (!dragPositions.empty() && dragPositions.limsup < 2) {
       dragPositions.pop();
     }
 
@@ -105,10 +105,10 @@ class GraphController {
 
       PVector finalPos = posToLoad.sub(posToLoad_2); 
 
-      
+
       PVector actual = this.axis.getOrigin();
       finalPos.normalize().mult(10).add(actual);
-      
+
       System.out.printf("x: %.2f, y: %.2f\n", finalPos.x, finalPos.y);
       this.axis.setOrigin(finalPos.x, finalPos.y);
     }
