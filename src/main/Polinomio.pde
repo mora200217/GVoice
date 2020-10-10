@@ -30,11 +30,11 @@ public class Polinomio {
     }
   }
   //saca el valor en determinado X.
-  public int y(int x) {
-    int valor = 0;
+  public float y(float x) {
+    float valor = 0;
     for (int i =0; i<grado; i++) {
       valor+=(coef[i]*pow(x, i));
-      println(valor);
+      //println(valor);
     }
     return valor;
   }
