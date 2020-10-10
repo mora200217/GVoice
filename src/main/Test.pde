@@ -1,21 +1,17 @@
 
 
 
-void Ivan(){
-  
+void Ivan() {
+
 }
 
-void Juanfer(){
-  
-}
-
-
-void Miguel(){
-  
-  
+void Juanfer() {
 }
 
 
-void Morales(){
-  
+void Miguel() {
+}
+
+
+void Morales() {
 }

@@ -5,8 +5,9 @@ class GraphController {
   private int amountOfElements; 
   private boolean visibility; // Is Visible ?   
   private boolean rendering;  // Will render ? 
-  private PImage bg; 
-  private Stack<PVector> dragPositions;  
+  // private PImage bg; 
+  private Stack<PVector> dragPositions; 
+  private QueueGen<Element>inScreen=new RefQueue();
   private AxisSystem axis; 
 
   public GraphController() {
@@ -18,7 +19,7 @@ class GraphController {
     dimension = new PVector(500, 500); 
     axis = new AxisSystem(origin, dimension); 
     dragPositions = new Stack<PVector>(200); 
-    bg = loadImage("bg.png");
+    // bg = loadImage("bg.png");
   }
 
   public PVector getOrigin() {
@@ -45,6 +46,9 @@ class GraphController {
     this.dimension = new PVector(x, y);
     this.axis.setDimension(x, y);
   }
+  public void addElement(Element cosa) {
+    inScreen.enQueue(cosa);
+  }
 
 
 
@@ -60,8 +64,23 @@ class GraphController {
 
 
     this.update();
-    this.axis.draw(); 
-
+    this.axis.draw();
+    Element memoria;
+    float[] puntos;
+    for(int j=0;j<inScreen.numInside();j++) {
+      memoria=inScreen.deQueue();
+      puntos=memoria.getPoints(this);
+      push();
+      stroke(random(0,255),random(0,255),random(0,255));
+      translate(this.axis.getOrigin().x-250,this.axis.getOrigin().y);
+        rotate(radians(180));
+        scale(-1,1);
+      for (int i=0; i<puntos.length-1; i++) {
+        line(i*memoria.getDelta(), puntos[i],(i+1)*memoria.getDelta(),puntos[i+1]);
+      }
+      pop();
+      inScreen.enQueue(memoria);
+    }
     // axes
   }
 
