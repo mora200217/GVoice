@@ -17,16 +17,17 @@ public class Polinomio {
   }
   public Polinomio(int[] coeft, int gradot) {
     grado=gradot;
-    if (grado < 0) {
+    if (grado < 0)
       throw new RuntimeException("el grado ingresado no es valido");
-    } else {
-      if (coeft.length-1!=grado) {
+    else {
+      if (coeft.length-1!=grado)
         throw new RuntimeException("el numero de indices debe concidir con el grado");
-      }
+
       coef = new int[grado+=1];
-      for (int i = 0; i <= grado-1; i++) {
+      
+      for (int i = 0; i <= grado-1; i++)
         coef[i] = coeft[i];
-      }
+      
     }
   }
   //saca el valor en determinado X.
