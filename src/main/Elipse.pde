@@ -1,7 +1,6 @@
 public class Elipse {
   //Declaración de variables funcionales tanto para la elipse como para el círculo 
-  PVector centroide;
-  centroide = new Pvector(0,0);
+  PVector centroide = new PVector(0,0);
   private float radio_may = 1;
   private float radio_men = 1;
 
