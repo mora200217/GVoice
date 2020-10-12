@@ -1,26 +1,36 @@
-//implementacion de cola generica usando array
-interface ColaGen<T> {
-  abstract  public boolean vacio();
-  abstract  public boolean lleno();
-  abstract public int numAdentro();
-  abstract public T atender();
-  abstract public void meter(T item);
+/**
+ * Cola Array ( Queue )
+ * 
+ *  Estructura basada en arrays, 
+ *  Consta de 1 array. 
+ */
+interface QueueGen<T> {
+  abstract  public boolean empty();
+  abstract  public boolean full();
+  abstract public int numInside();
+  abstract public T deQueue();
+  abstract public void enQueue(T item);
 }
-public class Cola<T> implements  ColaGen<T> {
+public class Queue<T> implements  QueueGen<T> {
   private static final int N = 5;
   private int comienzo, fin, contador;
   private T[] qarray;
-  public Cola() {
+  public Queue() {
     this(N);
   }
-  public Cola(int N) {
+  public Queue(int N) {
     comienzo = fin = contador = 0;
     qarray = (T[]) new Object[N];
   }
-  //metodo dequeue
-  public T atender() {
+  /**
+   *  saca un elemento.
+   *  Maneja Excepción de espacio.
+   *  @param {}.
+   *  @return{Type} - Éxito del proceso. 
+   **/
+  public T deQueue() {
     T item = null;
-    if (vacio())
+    if (empty())
       throw new RuntimeException("la cola esta vacia");
     else {
       item = qarray[comienzo];
@@ -29,9 +39,14 @@ public class Cola<T> implements  ColaGen<T> {
     }
     return item;
   }
-  //metodo enqueue
-  public void meter(T item) {
-    if (lleno())
+  /**
+   *  inserta un elemento.
+   *  Maneja Excepción de espacio.
+   *  @param {Type}.
+   *  @return{} -Exito del proceso. 
+   **/
+  public void enQueue(T item) {
+    if (full())
       throw new RuntimeException("no hay espacio");
     else {
       qarray[fin] = item;
@@ -39,15 +54,28 @@ public class Cola<T> implements  ColaGen<T> {
       contador++;
     }
   }
-  //booleanos de control
-  public boolean vacio() {
+  /**
+   *  retorna si la cola esta vacia o no.
+   *  @param {}.
+   *  @return{Boolean} -esta vacia. 
+   **/
+  public boolean empty() {
     return contador <= 0;
   }
-  public boolean lleno() {
-    return contador >= N;
+  /**
+   *  retorna si la cola esta llena o no.
+   *  @param {}.
+   *  @return{Boolean} -esta llena. 
+   **/
+  public boolean full() {
+    return contador >= qarray.length;
   }
-//contador de elementos en la cola
-  public int numAdentro() {
+  /**
+   *  retorna la cantidad de elementos en la cola.
+   *  @param {}.
+   *  @return{Intiger} -numero elementos en la cola. 
+   **/
+  public int numInside() {
     return contador;
   }
 }

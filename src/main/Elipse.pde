@@ -1,10 +1,10 @@
-public class Elipse{
+public class Elipse {
   //Declaración de variables funcionales tanto para la elipse como para el círculo 
   PVector centroide;
   centroide = new Pvector(0,0);
   private float radio_may = 1;
   private float radio_men = 1;
-  
+
   //Constructor para el círculo 
   
   public Elipse(float x, float y,float radio) {
@@ -13,7 +13,7 @@ public class Elipse{
     this.radio_may = radio;
     this.radio_men = radio_may;
   }
-  
+
   //Constructor para la elipse
   
   public Elipse(float x, float y,float may, float men){
@@ -22,7 +22,7 @@ public class Elipse{
     this.radio_may = may;
     this.radio_men = men;
   }
-  
+
   //Retorna dos valores de y para cada x
   //Al despejar y de la fórmula de la elipse tenemos:  
   //sqrt(((pow(radio_may,2)*pow(radio_men,2)-pow(radio_men,2)*pow((x-centroide.x),2))/pow(radio_may,2)))+centroide.y 
@@ -38,5 +38,4 @@ public class Elipse{
     
     return f;
   }
-  
 }
