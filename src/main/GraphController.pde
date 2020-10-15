@@ -72,12 +72,15 @@ class GraphController {
       puntos=memoria.getPoints(this);
       push();
       stroke(random(0,255),random(0,255),random(0,255));
-      translate(this.axis.getOrigin().x-250,this.axis.getOrigin().y);
+      translate(this.axis.getOrigin().x-this.getDimension().x/2,this.axis.getOrigin().y);
         rotate(radians(180));
         scale(-1,1);
-      for (int i=0; i<puntos.length-1; i++) {
-        line(i*memoria.getDelta(), puntos[i],(i+1)*memoria.getDelta(),puntos[i+1]);
+      noFill();
+      beginShape();
+      for (int i=0; i<puntos.length; i++) {
+        curveVertex(i*memoria.getDelta(), puntos[i]); 
       }
+      endShape();
       pop();
       inScreen.enQueue(memoria);
     }
