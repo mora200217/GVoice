@@ -9,23 +9,21 @@ void setup() {
   surface.setTitle(APP_NAME);
   perrohp =new  GraphController(width, height);
   perrohp.setOrigin(width/2, height/2);
-  float [] hola={1,1,1};
-  Polinomio f1=new Polinomio(hola,2);
+  float [] hola={0, 0, 0.01, 0};
+  Polinomio f1=new Polinomio(hola,3);
   Polinomio f2=new Polinomio(1);
-  Polinomio f3=new Polinomio(3);
+  Polinomio f3=new Polinomio(2);
   perrohp.addElement(f1);
-  perrohp.addElement(f2);
-   perrohp.addElement(f3);
+  // perrohp.addElement(f2);
+  //perrohp.addElement(f3);
   background(255);
-
 }
 
 // -----------------------------------------
 void draw() {
-  background(255);
-  
+
   perrohp.draw();
-  
+
   //switch(keyVal){
   //  //----------------------------
   //  case 1: 
@@ -34,7 +32,7 @@ void draw() {
   //  //----------------------------
   //      Juanfer(); 
   //  case 2: 
-    
+
   //  break; 
   //  //----------------------------
   //  case 3: 
@@ -44,8 +42,6 @@ void draw() {
   //  case 4: 
   //      Morales(); 
   //  break; 
-    
+
   //}
-  
-  
 }
