@@ -55,9 +55,9 @@ class GraphController {
   public void draw() {
     rectMode(CENTER); 
     // base 
-    fill(250); 
+    fill(255); 
     noStroke();  
-    rect(this.origin.x, this.origin.y, this.dimension.x * 2, this.dimension.y);
+    rect(this.origin.x, this.origin.y, this.dimension.x, this.dimension.y);
     // imageMode(CENTER); 
 
     // image(bg, this.origin.x, this.origin.y, this.dimension.x, this.dimension.y); 
@@ -67,23 +67,18 @@ class GraphController {
     this.axis.draw();
     Element memoria;
     float[] puntos;
-    
-    
     for(int j=0;j<inScreen.numInside();j++) {
       memoria=inScreen.deQueue();
       puntos=memoria.getPoints(this);
       push();
-      //stroke(random(0,255),random(0,255),random(0,255));
-      translate(this.axis.getOrigin().x-250,this.axis.getOrigin().y);
+      stroke(random(0,255),random(0,255),random(0,255));
+      translate(this.axis.getOrigin().x-this.getDimension().x/2,this.axis.getOrigin().y);
         rotate(radians(180));
         scale(-1,1);
-        noFill();
-        stroke(240, 240,120);
-        strokeWeight(2); 
-        beginShape(POLYGON);
-      for (int i=0; i<puntos.length-1; i++) {
+      noFill();
+      beginShape();
+      for (int i=0; i<puntos.length; i++) {
         curveVertex(i*memoria.getDelta(), puntos[i]); 
-       // line(i*memoria.getDelta(), puntos[i],(i+1)*memoria.getDelta(),puntos[i+1]);
       }
       endShape();
       pop();
