@@ -11,7 +11,7 @@ public class Tree<T> {
     String[] lines = loadStrings("Hello.txt");
     for (int i = 0 ; i < lines.length; i++) {
       if(lines[i].charAt(0) != 9){
-      
+        println(i);
       }
       for(int h = 0; h < lines[i].length(); h++){
         if(lines[i].charAt(h) == 9){
