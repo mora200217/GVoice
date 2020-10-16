@@ -5,12 +5,14 @@
  *  Consta de 1 array. 
  */
 interface QueueGen<T> {
-  abstract  public boolean isEmpty();
-  abstract  public boolean isFull();
+  
+  abstract public boolean isEmpty();
+  abstract public boolean isFull();
   abstract public int numInside();
   abstract public T peek(); 
   abstract public T dequeue();
   abstract public void enqueue(T item);
+  
 }
 public class Queue<T> implements  QueueGen<T> {
   private static final int N = 5;

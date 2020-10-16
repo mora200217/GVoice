@@ -7,12 +7,16 @@
 public class RefQueue<T> implements  QueueGen<T> {
   private SingleNode front, rear;
   private int count;
+  
   //se crea una clase interna como explico el profesor para que solo la pila pueda acceder al nodo
+  
   private class SingleNode
   { 
-    T data;
-    SingleNode next;
+    public T data;
+    public SingleNode next;
   }
+  
+  
   public RefQueue() {
     front = null;
     rear= null;

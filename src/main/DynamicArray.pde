@@ -1,7 +1,9 @@
 interface DynamicArrayGen<T> {
+  
   abstract public int length();
   abstract public T get(int i);
   abstract public void set(int i, T j);
+  
 }
 public class DynamicArray<T> implements DynamicArrayGen<T> {
   private static final int N = 2;
