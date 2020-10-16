@@ -30,7 +30,7 @@ public class Polinomio implements Element {
         throw new RuntimeException("el numero de indices debe concidir con el grado");
     }
     coef = new float[grado+1];
-    for (int i = 0; i <= grado-1; i++) {
+    for (int i = 0; i <= grado; i++) {
       coef[i] = coeft[i];
     }
   }
