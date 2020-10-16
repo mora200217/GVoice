@@ -8,6 +8,7 @@ interface QueueGen<T> {
   abstract  public boolean empty();
   abstract  public boolean full();
   abstract public int numInside();
+  abstract public T peek(); 
   abstract public T deQueue();
   abstract public void enQueue(T item);
 }
@@ -15,6 +16,7 @@ public class Queue<T> implements  QueueGen<T> {
   private static final int N = 5;
   private int comienzo, fin, contador;
   private T[] qarray;
+  
   public Queue() {
     this(N);
   }
@@ -54,6 +56,11 @@ public class Queue<T> implements  QueueGen<T> {
       contador++;
     }
   }
+  
+  public T peek(){
+    return qarray[comienzo]; 
+  }
+
   /**
    *  retorna si la cola esta vacia o no.
    *  @param {}.

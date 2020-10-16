@@ -9,6 +9,7 @@ class GraphController {
   private Stack<PVector> dragPositions; 
   private QueueGen<Element>inScreen=new RefQueue();
   private AxisSystem axis; 
+  private int step = 0; 
 
   public GraphController() {
     this(100, 100);
@@ -57,7 +58,7 @@ class GraphController {
     // base 
     fill(255); 
     noStroke();  
-    rect(this.origin.x, this.origin.y, this.dimension.x, this.dimension.y);
+    // rect(this.origin.x, this.origin.y, this.dimension.x, this.dimension.y);
     // imageMode(CENTER); 
 
     // image(bg, this.origin.x, this.origin.y, this.dimension.x, this.dimension.y); 
@@ -67,26 +68,44 @@ class GraphController {
     this.axis.draw();
     Element memoria;
     float[] puntos;
-    for(int j=0;j<inScreen.numInside();j++) {
-      memoria=inScreen.deQueue();
-      puntos=memoria.getPoints(this);
-      push();
-      stroke(random(0,255),random(0,255),random(0,255));
-      translate(this.axis.getOrigin().x-this.getDimension().x/2,this.axis.getOrigin().y);
-        rotate(radians(180));
-        scale(-1,1);
-      noFill();
-      beginShape();
-      for (int i=0; i<puntos.length; i++) {
-        curveVertex(i*memoria.getDelta(), puntos[i]); 
-      }
-      endShape();
-      pop();
-      inScreen.enQueue(memoria);
+
+    stroke(random(0,255), random(0,255), random(0,255)); 
+    // Desencolamos de la cola de renderizado 
+    
+    for(int j = 0; j < 1; j++){
+    memoria=inScreen.deQueue();
+    puntos=memoria.getPoints(this);
+
+    // Graficar 
+    push();
+    stroke(random(0, 255), random(0, 255), random(0, 255));
+    translate(this.axis.getOrigin().x-this.getDimension().x/2 + frameCount * 1, this.axis.getOrigin().y);
+    rotate(radians(180));
+    scale(-1, 1);
+    noFill();
+
+    beginShape();
+    
+    
+
+    // graficar los puntos 
+    for (int i=0; i<puntos.length; i++) {
+      curveVertex(i*memoria.getDelta(), puntos[i]);
     }
+    endShape();
+    pop();
+
+    inScreen.enQueue(memoria);
+    }
+
+
+
     // axes
   }
 
+  public Element headReference() {
+    return inScreen.peek();
+  }
 
   public boolean isMouseOver() {
     return true; 

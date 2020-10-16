@@ -62,6 +62,10 @@ public class RefQueue<T> implements  QueueGen<T> {
   public boolean empty() {
     return (contador<=0);
   }
+  
+  public T peek(){
+     return comienzo.Data;  
+  }
   /**
    *  retorna si la cola esta "llena" al ser por listas nunca se llena.
    *  @param {}.
