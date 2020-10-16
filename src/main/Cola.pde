@@ -5,23 +5,23 @@
  *  Consta de 1 array. 
  */
 interface QueueGen<T> {
-  abstract  public boolean empty();
-  abstract  public boolean full();
+  abstract  public boolean isEmpty();
+  abstract  public boolean isFull();
   abstract public int numInside();
   abstract public T peek(); 
-  abstract public T deQueue();
-  abstract public void enQueue(T item);
+  abstract public T dequeue();
+  abstract public void enqueue(T item);
 }
 public class Queue<T> implements  QueueGen<T> {
   private static final int N = 5;
-  private int comienzo, fin, contador;
+  private int front, rear, count;
   private T[] qarray;
   
   public Queue() {
     this(N);
   }
   public Queue(int N) {
-    comienzo = fin = contador = 0;
+    front = rear = count = 0;
     qarray = (T[]) new Object[N];
   }
   /**
@@ -30,14 +30,14 @@ public class Queue<T> implements  QueueGen<T> {
    *  @param {}.
    *  @return{Type} - Éxito del proceso. 
    **/
-  public T deQueue() {
+  public T dequeue() {
     T item = null;
-    if (empty())
+    if (isEmpty())
       throw new RuntimeException("la cola esta vacia");
     else {
-      item = qarray[comienzo];
-      comienzo = (comienzo + 1) % N;
-      contador--;
+      item = qarray[front];
+      front = (front + 1) % N;
+      count--;
     }
     return item;
   }
@@ -47,18 +47,18 @@ public class Queue<T> implements  QueueGen<T> {
    *  @param {Type}.
    *  @return{} -Exito del proceso. 
    **/
-  public void enQueue(T item) {
-    if (full())
+  public void enqueue(T item) {
+    if (isFull())
       throw new RuntimeException("no hay espacio");
     else {
-      qarray[fin] = item;
-      fin = (fin + 1) % N;
-      contador++;
+      qarray[rear] = item;
+      rear = (rear + 1) % N;
+      count++;
     }
   }
   
   public T peek(){
-    return qarray[comienzo]; 
+    return qarray[front]; 
   }
 
   /**
@@ -66,16 +66,16 @@ public class Queue<T> implements  QueueGen<T> {
    *  @param {}.
    *  @return{Boolean} -esta vacia. 
    **/
-  public boolean empty() {
-    return contador <= 0;
+  public boolean isEmpty() {
+    return count <= 0;
   }
   /**
    *  retorna si la cola esta llena o no.
    *  @param {}.
    *  @return{Boolean} -esta llena. 
    **/
-  public boolean full() {
-    return contador >= qarray.length;
+  public boolean isFull() {
+    return count >= qarray.length;
   }
   /**
    *  retorna la cantidad de elementos en la cola.
@@ -83,6 +83,6 @@ public class Queue<T> implements  QueueGen<T> {
    *  @return{Intiger} -numero elementos en la cola. 
    **/
   public int numInside() {
-    return contador;
+    return count;
   }
 }

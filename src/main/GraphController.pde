@@ -48,7 +48,7 @@ class GraphController {
     this.axis.setDimension(x, y);
   }
   public void addElement(Element cosa) {
-    inScreen.enQueue(cosa);
+    inScreen.enqueue(cosa);
   }
 
 
@@ -73,7 +73,7 @@ class GraphController {
     // Desencolamos de la cola de renderizado 
     
     for(int j = 0; j < 1; j++){
-    memoria=inScreen.deQueue();
+    memoria=inScreen.dequeue();
     puntos=memoria.getPoints(this);
 
     // Graficar 
@@ -95,7 +95,7 @@ class GraphController {
     endShape();
     pop();
 
-    inScreen.enQueue(memoria);
+    inScreen.enqueue(memoria);
     }
 
 
