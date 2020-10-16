@@ -12,6 +12,9 @@ void setup() {
 
   size(700, 500);
   surface.setTitle(APP_NAME);
+  DynamicArray<Integer> hola= new DynamicArray();
+  hola.set(16,5);
+  println(hola.length());
   perrohp =new  GraphController(width, height);
   perrohp.setOrigin(width/2, height/2);
   
