@@ -1,19 +1,28 @@
+/**
+ * TextReader
+ * 
+ *  Clase que toma un archivo txt 
+ *  Devuelve una cola con las palabras del mismo
+ *  Permanece en etapa de desarrollo
+ *
+ */
+
 public class TextReader {
   private String document;
-  
+  public RefQueue< String > instructions = new RefQueue(); 
   public TextReader(String input) {
     this.document =  input;
     String[] lines = loadStrings(document);
-    
     for (int line = 0; line < lines.length; line++) {
       String[] words = split(lines[line], " ");
-      for (int word = 0; word < words.length; word++){
-        println(word);
+
+      for (int index = 0; index < words.length; index++) {
+        this.instructions.enqueue(words[index]);
       }
     }
   }
-  public String[] lines(){
-    String[] lines = loadStrings(document);
-    return lines;
+  public RefQueue readThis(){
+    
+    return instructions;
   }
 }
