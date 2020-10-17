@@ -47,6 +47,6 @@ retorna si la cola esta llena o no.
 retorna la cantidad de elementos en la cola.
 
  * **Parameters:** `{}.` — 
- * **Returns:** {Intiger} -numero elementos en la cola. 
+ * **Returns:** {Integer} -numero elementos en la cola. 
 
      <p>
