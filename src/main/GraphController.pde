@@ -136,11 +136,11 @@ class GraphController {
     // Mouse drag
     if ( this.mouseDragged() ) {
       dragPositions.push(new PVector(mouseX, mouseY));
-    } else if (!dragPositions.empty() && dragPositions.limsup < 2) {
+    } else if (!dragPositions.empty() && dragPositions.numInside < 2) {
       dragPositions.pop();
     }
 
-    if (!dragPositions.empty() && dragPositions.limsup > 2) {
+    if (!dragPositions.empty() && dragPositions.numInside > 2) {
       PVector posToLoad = dragPositions.pop(); 
       PVector posToLoad_2 = dragPositions.pop();
 

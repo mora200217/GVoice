@@ -11,15 +11,15 @@ interface StackGen<T> {
   abstract public void push(T item);
 }
 public class Stack<T> implements  StackGen<T> {
-  private static final int n =10;
-  private int limsup;
+  private static final int N= 10;
+  private int numInside;
   private T[] arr;
   public Stack() {
-    this(n);
+    this(N);
   }
-  public Stack(int n) {
-    limsup = 0;
-    arr =(T[]) new Object[n];
+  public Stack(int N) {
+    numInside = 0;
+    arr =(T[]) new Object[N];
   }
   /**
    *  saca un elemento.
@@ -31,8 +31,8 @@ public class Stack<T> implements  StackGen<T> {
     if (empty()) {
       throw new RuntimeException("la pila esta vacia");
     }
-    limsup--;
-    return arr[limsup];
+    numInside--;
+    return arr[numInside];
   }
   /**
    *  inserta un elemento.
@@ -44,8 +44,8 @@ public class Stack<T> implements  StackGen<T> {
     if (full()) {
       throw new RuntimeException("no hay espacio");
     }
-    arr[limsup]=item;
-    limsup++;
+    arr[numInside]=item;
+    numInside++;
   }
   /**
    *  retorna si la pila esta llena o no.
@@ -53,7 +53,7 @@ public class Stack<T> implements  StackGen<T> {
    *  @return{Boolean} -esta llena. 
    **/
   public boolean full() {
-    return limsup >= arr.length;
+    return numInside >= arr.length;
   }
   /**
    *  retorna la cantidad de elementos en la cola.
@@ -61,6 +61,6 @@ public class Stack<T> implements  StackGen<T> {
    *  @return{Intiger} -numero elementos en la cola. 
    **/
   public boolean empty() {
-    return limsup <= 0;
+    return numInside <= 0;
   }
 }
