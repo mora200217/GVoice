@@ -1,4 +1,7 @@
-//implementacion para generar parabolas
+/**
+ * Parabola ( Parabola )
+ * implementacion para obtener los puntos de una Parabola
+ */
 public class Parabola {
   private float[] vertice = new float[2];
   private float[] foco = new float[2];
@@ -51,8 +54,12 @@ public class Parabola {
       foco[1] = vertice[1];
     }
   }
-
-  //saca el valor en determinado de la variable Dependiente
+  /**
+   *  Retorna dos valores de y para cada x.
+   *  
+   *  @param {Float} X a evaluar.
+   *  @return{Float} el punto Y para el X dado. 
+   **/
   public float dep(float ind) {
     float valor = 0;
     if (variable == 'x') {
