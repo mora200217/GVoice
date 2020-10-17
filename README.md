@@ -1,5 +1,9 @@
 # GVoice
 
+Este proyecto consiste en una plataforma enfocada en realizar gráficas 2D por medio de comandos de voz, facilitando de esta manera la interiorización de conceptos propios de las matemáticas, en particular propios del precálculo.
+
+Cualquier persona podrá hacer uso de esta aplicación gracias a su fácil interacción, además se busca reforzar un buen manejo del lenguaje utilizado en las matemáticas.
+
 # Integrantes  :octocat:
 |            Nombre                |                      Github nickname                      |
 |----------------------------------|-----------------------------------------------------------|
@@ -10,19 +14,25 @@
 
 
 # Introducción
-Las soluciones tecnológicas de visualización digital, han contribuido con la pedagogía y la consecuente aplicación de conceptos diseños, simulaciones y prototipado de proyectos en las últimas décadas.
-En las materias de cálculo multivariable, álgebra lineal, entre otras que requieran de un planteamiento geométrico- gráfico complejo, resulta de extrema utilidad recurrir a herramientas digitales. No obstante, muchos estudiantes y profesores no dominan por completo el entorno y, en algunos casos, invierten demasiado tiempo en la construcción de caso que quieren ilustrar.
 
-\\ Con el fin de optimizar este tiempo de aprendizaje para enfocarse mayormente en el concepto a explicar en vez de invertir tiempo en el proceso de elaboración de la gráfica, surge la propuesta de una herramienta de visualización matemática controlada por comandos de voz. Esto permitiría un mayor dinamismo en el proceso de aprendizaje, y una transición más fluida entre planteamiento y resolución de un ejercicio en las aulas.
-Se busca usar estructuras de datos para optimizar el procesamiento de instrucciones con sistemas predictivos y relaciones entre sinónimos de instrucciones para diversificar los comandos que se le pueden indicar al sistema; además de almacenar un historial de comandos y agrupar elementos en el espacio.
+Últimamente el desarrollo de aplicaciones que aporten al proceso de aprendizaje han ido en aumento, ya que la alta interactividad que se puede llegar a obtener con estas plataformas en general es beneficioso para incentivar a las personas a aprender, gran parte del éxito de estas se debe justamente a su diseño y facilidad de acceso a todas las personas, lo cual reduce la dificultad inicial de manejar una aplicación en particular para directamente pasar a los beneficios de la misma.
+
+Esta aplicaión busca ser justamente ese puente de fácil acceso al aprendizaje de asignaturas propias de las matemáticas que pueden llegar a ser muy complejas para las personas, haciendo uso del reconocimiento de voz para minimizar el tiempo que puede llegar a invertir un profesor o estudiante en la elaboración de la gráfica para poder directamente enfocarse en los conceptos.
+
 
 ## Problemática
-Herramientas como Wolfram Mathematica, Geogebra 3D o incluso Matlab, son los entornos predilectos para graficar datos o manipular geometrías. Para simplificar el flujo de trabajo al graficar múltiples escenarios, se ha optado por manejar estructuras genéricas parametrizadas. Esto permite al usuario únicamente ingresar los parámetros de la superficie para expandir o desplazar la geometría sin tener que exprese por completo la función, agilizando su visualización. Sin embargo, para gráficas más elaboradas se recurre a escribir directamente la expresión.
-Buscando un mayor control del espacio visualizado, han surgido herramientas como el Leap Motion o incluso las tabletas digitalizadoras de Wacom que permiten tener un control total del elemento – Rotando, trasladando o aumentando el campo de visión. Aunque eficiente, por ser una solución de hardware, implica una considerable inversión para adquirir las herramientas, siendo económicamente inviable para estudiantes independientes o instituciones que carezcan de un apoyo financiero sólido para herramientas tecnológicas.
-Tanto el control del espacio de visión, como ñas instrucciones de construcción geométrica convergen en la facilidad de los comandos de voz. Esto permite una versatilidad y eficacia en el uso de la herramienta ahorrando tiempo tanto de escritura de expresiones como en la visualización de puntos específicos de la gráfica. Asimismo, como valor agregado, el uso de comandos hablados incita el correcto uso del lenguaje matemático para expresar una idea que pueda ser entendida por el sistema de reconocimiento y por los pares del estudiante – profesor o usuario.
+En la actualidad, las matemáticas hacen parte fundamental del proceso educativo de la mayoría de las personas desde etapas tempranas en las escuelas, y no es de menos, ya que hoy en día la mayoría de profesiones requieren un conocimiento en esta área ya sea para llevar a cabo métricas y análisis de diversos experimentos, para tener una compresión más profunda de la información masiva proveniente de internet, o en casos como la ingeniería, donde se hace un uso extensivo de esta área.
+
+Dada esta relevancia, es de gran importancia garantizar que tanto los estudiantes como los profesores cuenten con las herramientas adecuadas para promover el aprendizaje de las matemáticas y una de las formas de hacerlo es por medio de las gráficas, las cuales herramientas como Geogebra o Wolfram Mathematica logran hacer con eficacia.
+
+El problema radica en que a algunas personas les cuesta hacer el correcto uso de estas herramientas, dado que utilizan en ciertas ocasiones comandos específicos del software para poder hacer las cosas.
+
+Este proyecto busca justamente minimizar el tiempo y esfuerzo que le puede costar a las personas realizar diversas gráficas, para lograr esto se propone la solución por medio de comandos de voz, haciendo el proceso más intuitivo con el fin de que se puedan enfocar más en aprendizaje de los conceptos tan importantes para el mundo actual.
 ## Marco teórico
 
 ## Antecedentes
+
+Para el desarrollo del proyecto se han usado referencias de aplicaciones como [GeoGebra](https://www.geogebra.org/graphing?lang=es), [Wolfram Mathematica](https://www.wolfram.com/mathematica/online/) y [Desmos](https://www.desmos.com/calculator?lang=es), las cuales si bien son excelentes a la hora de graficar y ofrecer otras soluciones propias de la geometría descriptiva no cuentan con un control por medio de la voz, aplicaciones que integren esta funcionalidad son realmente escasas y mucho mas para el español.
 
 # Objetivos
 
