@@ -23,6 +23,7 @@ public class Polinomio implements Element {
   }
   public Polinomio(float[] coeft, int gradot) {
     grado=gradot;
+    this.delta=1;
     if (grado < 0)
       throw new RuntimeException("el grado ingresado no es valido");
     else {
