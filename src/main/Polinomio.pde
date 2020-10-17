@@ -1,10 +1,12 @@
-//implementacion de la base para manejar polinomios.
+/**
+ * Polinomio ( Polinomio )
+ * implementacion para obtener los puntos de un polinomio
+ */
 public class Polinomio implements Element {
   private float[] coef;
   private int grado;
-  private float [] dupla;
-  public float delta=0;
-  public PVector pos=new PVector(0,0);
+  private float delta=0;
+  public PVector pos=new PVector(0, 0);
   public Polinomio(int gradot) {
     grado=gradot;
     this.delta=1;
@@ -35,7 +37,12 @@ public class Polinomio implements Element {
       coef[i] = coeft[i];
     }
   }
-  //saca el valor en determinado X.
+  /**
+   *  Retorna el valor de y para cada x.
+   *  
+   *  @param {Float} X a evaluar.
+   *  @return{Float} el punto de Y para el X dado. 
+   **/
   public float y(float x) {
     float valor = 0;
     for (int i =0; i<=grado; i++) {
@@ -44,27 +51,47 @@ public class Polinomio implements Element {
     }
     return valor;
   }
+  /**
+   *  Retorna los puntos de y para el eje coordenado.
+   *  
+   *  @param {GraphController} sistema grafico donde se va a evaluar.
+   *  @return{Float[]} los puntos de Y para el sistema grafico. 
+   **/
   public float[] getPoints(GraphController h) {
     //
     float size=h.getDimension().x;
     float[]points= new float [ceil(size/this.delta)];
-    for(float i=0;i<size;i+=delta){
+    for (float i=0; i<size; i+=delta) {
       points[int(i/delta)]=this.y(i-size/2);
     }
     return points;
   }
-  //retorna el grado del polinomio necesario para realizar la suma correctamente.
+  /**
+   *  Retorna el grado del polinomio.
+   *  @param {} .
+   *  @return{int} el grado del polinomio. 
+   **/
   public int grado() {
     return this.grado;
   }
-  public float getDelta(){
+    /**
+   *  Retorna el delta evaluado.
+   *  
+   *  @param {} .
+   *  @return{Float} retorna delta. 
+   **/
+  public float getDelta() {
     return delta;
   }
-  
-  //permite la suma de polinomios en caso que se quiera hacer una traslacion recordar que siempre al de mayor grado se le suma el menor.
+    /**
+   *  permite la suma de un polinimo menor o igual al actual.
+   *  
+   *  @param {Polinimio} .
+   *  @return{} -exito del proceso. 
+   **/
   public void suma(Polinomio b) {
     Polinomio a = this;
-    if (a.grado < b.grado) {
+    if (a.grado <= b.grado) {
       throw new RuntimeException("se le debe sumar al mayor el menor");
     }
     for (int i = 0; i <= b.grado; i++) {
