@@ -13,6 +13,9 @@ void setup() {
   val = 150;
   size(700, 500);
   surface.setTitle(APP_NAME);
+  
+  surface.setResizable(true); 
+  
   grafica = new  GraphController(width, height);
   grafica.setOrigin(width/2, height/2);
   float [] hola={1, 1, 1};
