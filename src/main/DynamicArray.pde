@@ -8,17 +8,25 @@ interface DynamicArrayGen<T> {
 public class DynamicArray<T> implements DynamicArrayGen<T> {
   private static final int N = 2;
   private T[] array;
+  private int size; // Número internos  
+
   public DynamicArray() {
     this(N);
   }
   public DynamicArray(int N) {
     array = (T[]) new Object[N];
   }
+
+  /**
+  * 
+  **/ 
   public void set(int i, T j) {
     int lenin=array.length;
-    while (lenin<i) {
-      lenin=lenin*lenin;
+
+    while (lenin < i) {
+      lenin = 2 * lenin; 
     }
+    
     if(lenin==array.length){
       array[i]=j;
     }
@@ -28,7 +36,7 @@ public class DynamicArray<T> implements DynamicArrayGen<T> {
        tempoarray[f]=array[f];
      }
      array=tempoarray;
-     tempoarray=null;
+     tempoarray = null;
      println(array.length);
      array[i-1]=j;
     }
@@ -43,7 +51,22 @@ public class DynamicArray<T> implements DynamicArrayGen<T> {
     }
      return elemento ;
   }
-  public int length() {
+
+
+  /**
+  *
+  **/ 
+
+  public pushBack(T element){
+    this.set(this.size, element); 
+    this.size++; 
+  }
+
+
+/**
+  *
+  **/ 
+  public int capacity() {
     return array.length;
   }
 }
