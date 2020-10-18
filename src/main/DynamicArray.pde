@@ -13,6 +13,8 @@ interface DynamicArrayGen<T> {
 public class DynamicArray<T> implements DynamicArrayGen<T> {
   private static final int N = 2;
   private T[] array;
+  private int size; // Número internos  
+
   public DynamicArray() {
     this(N);
   }
@@ -30,6 +32,7 @@ public class DynamicArray<T> implements DynamicArrayGen<T> {
     while (lenin<index) {
       lenin=lenin*lenin;
     }
+    
     if(lenin==array.length){
       array[index]=data;
     }

@@ -2,20 +2,20 @@
 String APP_NAME = "GVoice";  
 int keyVal = 0;  // 1 Ivan 2 Juanfer 3 Miguel 4 Morales
 GraphController grafica; 
-
+PGraphics ui; 
 boolean render = true; 
 int count2 = 0; 
 int val = 0; 
 
 // -----------------------------------------
 void setup() {
+  
+  
   //int count = millis();
-  val = 150;
+  val = 0;
   size(700, 500);
   surface.setTitle(APP_NAME);
-
   surface.setResizable(true); 
-
   grafica = new  GraphController(width, height);
   grafica.setOrigin(width/2, height/2);
   float [] hola={1, 1, 1};
@@ -34,8 +34,8 @@ void setup() {
   background(255);
 }
 
-// -----------------------------------------
-void draw() {
+//-----------------------------------------
+void render() {
   Element test = grafica.headReference(); 
 
   if (render) {
@@ -48,6 +48,29 @@ void draw() {
       render = false;
     count2 ++;
   }
+}
+
+
+// -----------------------------------------
+void UI() {
+  ui.beginDraw(); 
+   
+  Button b = new Button(80, 40, 40);
+  b.update();
+  b.draw(); 
+  grafica.draw();
+  Polinomio f3=new Polinomio(frameCount % 3 + 1);
+  if (b.isMousePressed())
+    grafica.addElement(f3);
+  ui.endDraw(); 
+}
+// -----------------------------------------
+void draw() {
+
+
+  render(); 
+  UI();
+  image(ui, 0,0); 
 }
 
 
