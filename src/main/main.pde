@@ -32,22 +32,21 @@ void setup() {
 
   grafica.setDimension(width, height);
   background(255);
-  ui = createGraphics(width, height);
 }
 
 //-----------------------------------------
 void render() {
   Element test = grafica.headReference(); 
 
-  if (render) {   
+  if (render) {
+
     int count = millis();
     grafica.draw();
     int finalTime = millis() - count; 
-    // System.out.printf("Tiempo: %d ms - Count: %d \n", finalTime, count2);
-
+    System.out.printf("Tiempo: %d ms - Count: %d \n", finalTime, count2);
     if ( count2  == val ) 
-      // render = false;
-      count2 ++;
+      render = false;
+    count2 ++;
   }
 }
 
@@ -76,4 +75,10 @@ void draw() {
 
 
 void mousePressed() {
+  //background(255);
+  render = true; 
+  count2 = 0;
+}
+void mouseDragged() {
+  background(255);
 }

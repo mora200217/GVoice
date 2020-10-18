@@ -87,11 +87,7 @@ class GraphController {
     rotate(radians(180));
     scale(-1, 1);
     noFill();
-
     beginShape();
-    
-    
-
     // graficar los puntos 
     for (int i=0; i<puntos.length; i++) {
       curveVertex(i*memoria.getDelta(), puntos[i]);
@@ -101,8 +97,6 @@ class GraphController {
 
     inScreen.enqueue(memoria);
     }
-
-
 
     // axes
   }
