@@ -52,6 +52,7 @@ void render() {
 
 
 // -----------------------------------------
+
 void UI() {
   ui.beginDraw(); 
    
@@ -64,6 +65,8 @@ void UI() {
     grafica.addElement(f3);
   ui.endDraw(); 
 }
+
+
 // -----------------------------------------
 void draw() {
 
