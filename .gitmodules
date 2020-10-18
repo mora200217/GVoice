@@ -1,3 +1,3 @@
-[submodule "libs/GVoice"]
-	path = libs/GVoice
-	url = https://github.com/mora200217/GVoice.git
+[submodule "libs/Data-Structures-for-processing"]
+	path = libs/Data-Structures-for-processing
+	url = https://github.com/mora200217/Data-Structures-for-processing.git
