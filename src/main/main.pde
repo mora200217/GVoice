@@ -6,13 +6,13 @@ PGraphics ui;
 boolean render = true; 
 int count2 = 0; 
 int val = 0; 
-int tiempototal=0;
+long tiempototal=0;
 // -----------------------------------------
 void setup() {
   
   
   //int count = millis();
-  val = 10;
+  val = 10000;
   size(700, 500);
   ui = createGraphics(40, 40);
   surface.setTitle(APP_NAME);
@@ -37,16 +37,16 @@ void render() {
 
   if (render) {
 
-    int count = millis();
+    long count = System.nanoTime();
     grafica.draw();
-    int finalTime = millis() - count; 
+    long finalTime =System.nanoTime() - count; 
     System.out.printf("Tiempo: %d ms - Count: %d \n", finalTime, count2);
     if ( count2  == val ) 
       render = false;
     count2 ++;
     tiempototal+=finalTime;
   }
-  System.out.printf("Tiempo: %d ms",tiempototal);
+  System.out.printf("Tiempo: %d ms",tiempototal/1000000);
 }
 
 
