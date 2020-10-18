@@ -12,7 +12,7 @@ interface StackGen<T> {
 }
 public class Stack<T> implements  StackGen<T> {
   private static final int N= 10;
-  private int numInside;
+  public int numInside;
   private T[] arr;
   public Stack() {
     this(N);

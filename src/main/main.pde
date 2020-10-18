@@ -7,7 +7,7 @@ int count2 = 0;
 int val = 0;
 // -----------------------------------------
 void setup() {
-  
+
   //int count = millis();
   val = 0;
   size(700, 500);
@@ -29,27 +29,15 @@ void setup() {
   //print((millis()-count));
 
   grafica.setDimension(width, height);
-  
-
-  background(255);
 }
 
 //-----------------------------------------
 void render() {
-  Element test = grafica.headReference(); 
-
-  if (render) {
-
-    int count = millis();
-    grafica.draw();
-    int finalTime = millis() - count; 
-    System.out.printf("Tiempo: %d ms - Count: %d \n", finalTime, count2);
-    if ( count2  == val ) 
-      render = false;
-    count2 ++;
-  }
+  int count = millis();
+  grafica.draw();
+  int finalTime = millis() - count; 
+  System.out.printf("Tiempo: %d ms - Count: %d \n", finalTime, count2);
 }
-
 
 // -----------------------------------------
 
@@ -57,29 +45,26 @@ void UI() {
   Button b = new Button(80, 40, 40);
   b.update();
   b.draw(); 
-  grafica.draw();
-  Polinomio f3=new Polinomio(frameCount % 3 + 1);
-  if (b.isMousePressed())
-    grafica.addElement(f3);
 
+  Polinomio f3=new Polinomio(frameCount % 3 + 1);
+  if (b.isMousePressed()) {
+    grafica.addElement(f3);
+    grafica.generateImage();
+  }
 }
 
 
 // -----------------------------------------
 void draw() {
-
-
+  //background(255, 255, 255, 23);
   render(); 
   UI();
-
+  delay(23); 
+  image(grafica.imgToShow, 230, 23);
 }
-
 
 void mousePressed() {
-  //background(255);
-  render = true; 
+
+  // render = true; 
   count2 = 0;
-}
-void mouseDragged() {
-  //background(255);
 }
