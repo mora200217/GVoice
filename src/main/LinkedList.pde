@@ -7,10 +7,10 @@
  *      - { Node } rear: referencia al nodo cola de la lista (último)
  */
 
-public class LinkedList {
+public class LinkedList<T> {
 
-  private Node front; 
-  private Node rear;
+  private Node<T> front; 
+  private Node<T> rear;
   private int n; 
 
   public LinkedList() {
@@ -47,6 +47,11 @@ public class LinkedList {
       this.front = element;
     }; 
     this.n++; 
+    return true;
+  }
+
+  boolean pushFront(T data) {
+    this.pushFront(new Node<T>(data)); 
     return true;
   }
 
@@ -87,12 +92,21 @@ public class LinkedList {
    **/
   boolean pushRear(Node nodeToRear) {
     nodeToRear.setPrev(this.rear); 
+    if (this.rear == null){
+       this.rear = nodeToRear;
+       return true; 
+    }
+      
     this.rear.setNext(nodeToRear); 
     this.rear = nodeToRear;
     this.n++; 
     return true;
   }
 
+  boolean pushRear(T data) {
+    this.pushRear(new Node<T>(data));
+    return true;
+  }
   /**
    *  Hace pop del último elemento.
    *

@@ -1,15 +1,12 @@
-
 String APP_NAME = "GVoice";  
 int keyVal = 0;  // 1 Ivan 2 Juanfer 3 Miguel 4 Morales
 GraphController grafica; 
 PGraphics ui; 
 boolean render = true; 
 int count2 = 0; 
-int val = 0; 
-
+int val = 0;
 // -----------------------------------------
 void setup() {
-  
   
   //int count = millis();
   val = 0;
@@ -32,6 +29,8 @@ void setup() {
   //print((millis()-count));
 
   grafica.setDimension(width, height);
+  
+
   background(255);
 }
 
@@ -55,7 +54,6 @@ void render() {
 // -----------------------------------------
 
 void UI() {
- ui.beginDraw(); 
   Button b = new Button(80, 40, 40);
   b.update();
   b.draw(); 
@@ -63,7 +61,7 @@ void UI() {
   Polinomio f3=new Polinomio(frameCount % 3 + 1);
   if (b.isMousePressed())
     grafica.addElement(f3);
-  ui.endDraw(); 
+
 }
 
 
@@ -73,7 +71,7 @@ void draw() {
 
   render(); 
   UI();
-  image(ui, 0,0); 
+
 }
 
 
@@ -83,5 +81,5 @@ void mousePressed() {
   count2 = 0;
 }
 void mouseDragged() {
-  background(255);
+  //background(255);
 }

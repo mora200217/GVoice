@@ -14,7 +14,8 @@ public class DynamicArray<T> implements DynamicArrayGen<T> {
   private static final int N = 2;
   private T[] array;
   private int size; // Número internos  
-
+  private int n = 0; 
+  
   public DynamicArray() {
     this(N);
   }
@@ -28,16 +29,20 @@ public class DynamicArray<T> implements DynamicArrayGen<T> {
    *  @return{} - Éxito del proceso. 
    **/
   public void set(int index, T data) {
+   
     int lenin=array.length;
-    while (lenin<index) {
-      lenin=lenin*lenin;
+    while (lenin <= index) {
+      lenin= 2 * lenin;
     }
     
-    if(lenin==array.length){
+    if( lenin <= array.length){
+  
       array[index]=data;
     }
+    
     else{
      T[] tempoarray = (T[]) new Object[lenin];
+     
      for(int f=0;f<array.length;f++){
        tempoarray[f]=array[f];
      }
@@ -54,7 +59,7 @@ public class DynamicArray<T> implements DynamicArrayGen<T> {
    **/
   public T get(int i) {
     T elemento;
-    if(array.length<i){
+    if(array.length>i){
      elemento=array[i];
     }
     else{
@@ -70,4 +75,20 @@ public class DynamicArray<T> implements DynamicArrayGen<T> {
   public int length() {
     return array.length;
   }
+  
+  public void pushBack(T data){
+    this.set(n, data); 
+    n++; 
+  }
+  
+  public T popBack(){
+      T returnElement = this.get(n); 
+      n--; 
+      return returnElement; 
+  }
+  
+  public boolean isEmpty(){
+      return n <= 0; 
+  }
+  
 }

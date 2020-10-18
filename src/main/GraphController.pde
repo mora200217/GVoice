@@ -5,13 +5,22 @@ class GraphController {
   private int amountOfElements; 
   private boolean visibility; // Is Visible ?   
   private boolean rendering;  // Will render ? 
+  private int MAX_GRAPHS_PER_CYCLE = 1;   
+
+
   // private PImage bg; 
+
   private Stack<PVector> dragPositions; 
   private QueueGen<Element>inScreen=new RefQueue();
+  private LinkedList<Float> valuesToGraph = new LinkedList(); 
+
+
+  private Satck<PGraphics> graphsArray = new Stack(10);
+
   private AxisSystem axis; 
   private int step = 0; 
   private PGraphics pg; 
-  
+
   //public RefStack<> actionHistory 
 
   public GraphController() {
@@ -24,7 +33,7 @@ class GraphController {
     axis = new AxisSystem(origin, dimension); 
     dragPositions = new Stack<PVector>(200); 
     // bg = loadImage("bg.png");
-    pg = createGraphics(width,height); 
+    pg = createGraphics(width, height);
   }
 
   public PVector getOrigin() {
@@ -57,6 +66,38 @@ class GraphController {
 
 
 
+
+  private void savePoints(Element e) {
+    float points[] = e.getPoints(this);
+    PGraphics pg = createGraphics(width, height); // CAMBIAR
+
+    pg.beginDraw(); 
+    beginShape();
+    noFill(); 
+    for (int i = 0; i < 10; i ++) { 
+      valuesToGraph.pushRear(points[i]); // Análisis numérico posterior 
+      curveVertex(i* e.getDelta(), points[i]);
+    }
+    endShape();
+    pg.endDraw(); 
+
+    // Agregar la imágen al final del dynamic Array
+    graphsArray.push(pg);
+  }
+
+
+  private PGraphics generateImage() {
+    PGraphics pg = createGraphics(width, height);
+    pg.beginDraw();
+
+    while (!graphsArray.isEmpty())
+      image(graphsArray.pop(), 0, 0);
+
+    pg.endDraw(); 
+    return pg;
+  }
+
+
   public void draw() {
     rectMode(CENTER); 
     // base 
@@ -64,41 +105,29 @@ class GraphController {
     noStroke();  
     // rect(this.origin.x, this.origin.y, this.dimension.x, this.dimension.y);
     // imageMode(CENTER); 
-
-    // image(bg, this.origin.x, this.origin.y, this.dimension.x, this.dimension.y); 
-
+    // image(bg, this.origin.x, this.origin.y, this.dimension.x, this.dimension.y);
 
     this.update();
-    this.axis.draw();
+    this.axis.draw(); // Ejes dibujados 
+
+    // ---------- Renderizado de gráficas 
     Element memoria;
     float[] puntos;
 
-    // stroke(random(0,255), random(0,255), random(0,255)); 
-    // Desencolamos de la cola de renderizado 
+    // stroke(random(0,255), random(0,255), random(0,255));
+
+    // Desencolamos de la cola de renderizado por un máximo
+    // de gráficas por ciclo. El ciclo 
+
+    for (int j = 0; j < this.MAX_GRAPHS_PER_CYCLE; j++) {
+      memoria=inScreen.dequeue();
+      this.savePoints(memoria); 
+      // Graficar 
+      this.savePoints(memoria); // Guarda los puntos como imagen
+      inScreen.enqueue(memoria);
+    }
     
-    for(int j = 0; j < 1; j++){
-    memoria=inScreen.dequeue();
-    puntos=memoria.getPoints(this);
-
-    // Graficar 
-    push();
-    // stroke(random(0, 255), random(0, 255), random(0, 255));
-    translate(this.axis.getOrigin().x-this.getDimension().x/2 , this.axis.getOrigin().y);
-    rotate(radians(180));
-    scale(-1, 1);
-    noFill();
-    beginShape();
-    // graficar los puntos 
-    for (int i=0; i<puntos.length; i++) {
-      curveVertex(i*memoria.getDelta(), puntos[i]);
-    }
-    endShape();
-    pop();
-
-    inScreen.enqueue(memoria);
-    }
-
-    // axes
+    image(this.generateImage(), 0,0);
   }
 
   public Element headReference() {
