@@ -28,6 +28,7 @@ class AxisSystem {
 
 
   public void draw() {
+    //background(255);
     stroke(200); 
     // vertical
     line(this.origin.x, 0, this.origin.x, height);
@@ -36,7 +37,7 @@ class AxisSystem {
 
     // Texto 
     fill(23); 
-    text("x", 20, 20);
+    text("y", 20, 20);
     text("x", this.origin.x + this.dimension.x / 2 - 15, this.origin.y + 15);
 
     //     if()

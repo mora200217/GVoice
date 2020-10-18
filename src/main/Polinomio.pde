@@ -13,7 +13,7 @@ public class Polinomio implements Element {
     this.pos=new PVector(0, 0);
     if (grado < 0) {
 
-      //por si se ponen de mamones con grados negativos.
+      //Evita errores al incluir exponentes menores a 0
       throw new RuntimeException("el grado ingresado no es valido");
     } else {
       coef = new float[grado+1];

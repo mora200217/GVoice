@@ -13,9 +13,9 @@ void setup() {
   val = 150;
   size(700, 500);
   surface.setTitle(APP_NAME);
-  
+
   surface.setResizable(true); 
-  
+
   grafica = new  GraphController(width, height);
   grafica.setOrigin(width/2, height/2);
   float [] hola={1, 1, 1};
@@ -31,29 +31,31 @@ void setup() {
   //print((millis()-count));
 
   grafica.setDimension(width, height);
-   background(255);
+  background(255);
 }
 
 // -----------------------------------------
 void draw() {
   Element test = grafica.headReference(); 
-   
+
   if (render) {
-   
+
     int count = millis();
     grafica.draw();
     int finalTime = millis() - count; 
     System.out.printf("Tiempo: %d ms - Count: %d \n", finalTime, count2);
-    
     if ( count2  == val ) 
       render = false;
-    count2 ++; 
+    count2 ++;
   }
 }
 
 
-void mousePressed(){
-
-   render = true; 
-   count2 = 0; 
+void mousePressed() {
+  //background(255);
+  render = true; 
+  count2 = 0;
+}
+void mouseDragged() {
+  background(255);
 }

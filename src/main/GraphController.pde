@@ -68,7 +68,6 @@ class GraphController {
     this.axis.draw();
     Element memoria;
     float[] puntos;
-
     stroke(random(0,255), random(0,255), random(0,255)); 
     // Desencolamos de la cola de renderizado 
     
@@ -79,15 +78,11 @@ class GraphController {
     // Graficar 
     push();
     stroke(random(0, 255), random(0, 255), random(0, 255));
-    translate(this.axis.getOrigin().x-this.getDimension().x/2 + frameCount * 1, this.axis.getOrigin().y);
+    translate(this.axis.getOrigin().x-this.getDimension().x/2, this.axis.getOrigin().y);
     rotate(radians(180));
     scale(-1, 1);
     noFill();
-
     beginShape();
-    
-    
-
     // graficar los puntos 
     for (int i=0; i<puntos.length; i++) {
       curveVertex(i*memoria.getDelta(), puntos[i]);
@@ -97,8 +92,6 @@ class GraphController {
 
     inScreen.enqueue(memoria);
     }
-
-
 
     // axes
   }
