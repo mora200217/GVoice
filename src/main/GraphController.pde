@@ -10,6 +10,9 @@ class GraphController {
   private QueueGen<Element>inScreen=new RefQueue();
   private AxisSystem axis; 
   private int step = 0; 
+  private PGraphics pg; 
+  
+  //public RefStack<> actionHistory 
 
   public GraphController() {
     this(100, 100);
@@ -21,6 +24,7 @@ class GraphController {
     axis = new AxisSystem(origin, dimension); 
     dragPositions = new Stack<PVector>(200); 
     // bg = loadImage("bg.png");
+    pg = createGraphics(width,height); 
   }
 
   public PVector getOrigin() {
@@ -69,7 +73,7 @@ class GraphController {
     Element memoria;
     float[] puntos;
 
-    stroke(random(0,255), random(0,255), random(0,255)); 
+    // stroke(random(0,255), random(0,255), random(0,255)); 
     // Desencolamos de la cola de renderizado 
     
     for(int j = 0; j < 1; j++){
@@ -78,8 +82,8 @@ class GraphController {
 
     // Graficar 
     push();
-    stroke(random(0, 255), random(0, 255), random(0, 255));
-    translate(this.axis.getOrigin().x-this.getDimension().x/2 + frameCount * 1, this.axis.getOrigin().y);
+    // stroke(random(0, 255), random(0, 255), random(0, 255));
+    translate(this.axis.getOrigin().x-this.getDimension().x/2 , this.axis.getOrigin().y);
     rotate(radians(180));
     scale(-1, 1);
     noFill();

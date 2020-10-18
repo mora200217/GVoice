@@ -1,0 +1,3 @@
+[submodule "libs/GVoice"]
+	path = libs/GVoice
+	url = https://github.com/mora200217/GVoice.git

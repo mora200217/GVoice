@@ -57,7 +57,7 @@ public class DynamicArray<T> implements DynamicArrayGen<T> {
   *
   **/ 
 
-  public pushBack(T element){
+  public void pushBack(T element){
     this.set(this.size, element); 
     this.size++; 
   }
@@ -66,7 +66,7 @@ public class DynamicArray<T> implements DynamicArrayGen<T> {
 /**
   *
   **/ 
-  public int capacity() {
+  public int length() {
     return array.length;
   }
 }
