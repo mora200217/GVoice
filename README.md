@@ -64,4 +64,3 @@ Para el desarrollo de este proyecto de hace uso de [Processing](https://processi
 # Trabajo Futuro
 
 Dada la extensión del proyecto, el trabajo futuro se centrará en la corrección de errores respecto a la detección de voz, el mover la aplicación a entornos móviles, así como la implementación de otras funcionalidades tales como las gráficas 3D y otras graficas complejas que en principio no sería posible desarrollar dentro del tiempo disponible del curso.
-<mxfile host="app.diagrams.net" modified="2020-10-16T22:52:59.470Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Safari/605.1.15" version="13.8.0" etag="tbO4HrlMKynzkg1Pur0W" type="github"><diagram id="Fua7O8DuJPWcXv896wAL">UzV2zq1wL0osyPDNT0nNUTV2VTV2LsrPL4GwciucU3NyVI0MMlNUjV1UjYwMgFjVyA2HrCFY1qAgsSg1rwSLBiADYTaQg2Y1AA==</diagram></mxfile>
