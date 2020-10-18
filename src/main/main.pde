@@ -14,6 +14,7 @@ void setup() {
   //int count = millis();
   val = 0;
   size(700, 500);
+  ui = createGraphics(40, 40);
   surface.setTitle(APP_NAME);
   surface.setResizable(true); 
   grafica = new  GraphController(width, height);
@@ -54,8 +55,7 @@ void render() {
 // -----------------------------------------
 
 void UI() {
-  ui.beginDraw(); 
-   
+ ui.beginDraw(); 
   Button b = new Button(80, 40, 40);
   b.update();
   b.draw(); 
