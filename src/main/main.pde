@@ -53,7 +53,7 @@ void render() {
 
 // -----------------------------------------
 void UI() {
-  ui.beginDraw(); 
+ // ui.beginDraw(); 
    
   Button b = new Button(80, 40, 40);
   b.update();
@@ -62,7 +62,7 @@ void UI() {
   Polinomio f3=new Polinomio(frameCount % 3 + 1);
   if (b.isMousePressed())
     grafica.addElement(f3);
-  ui.endDraw(); 
+  //ui.endDraw(); 
 }
 // -----------------------------------------
 void draw() {
