@@ -6,28 +6,24 @@ PGraphics ui;
 boolean render = true; 
 int count2 = 0; 
 int val = 0; 
-
+int tiempototal=0;
 // -----------------------------------------
 void setup() {
   
   
   //int count = millis();
-  val = 0;
+  val = 10;
   size(700, 500);
   ui = createGraphics(40, 40);
   surface.setTitle(APP_NAME);
   surface.setResizable(true); 
   grafica = new  GraphController(width, height);
   grafica.setOrigin(width/2, height/2);
-  float [] hola={1, 1, 1};
   Polinomio[] f2 = new Polinomio[val];
-  Polinomio f3=new Polinomio(3);
-
   for (int i = 0; i < val; i++) {
-    f2[i] = new Polinomio(i+1);
+    f2[i] = new Polinomio(int(random(0,8)));
     grafica.addElement(f2[i]);
   }
-  grafica.addElement(f3);
   background(255);
   //print((millis()-count));
 
@@ -48,7 +44,9 @@ void render() {
     if ( count2  == val ) 
       render = false;
     count2 ++;
+    tiempototal+=finalTime;
   }
+  System.out.printf("Tiempo: %d ms",tiempototal);
 }
 
 
