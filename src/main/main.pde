@@ -5,7 +5,7 @@ PGraphics ui;
 boolean render = true; 
 int count2 = 0; 
 int val = 1;
-boolean toChange = false; 
+boolean toChange = true; 
 PGraphics image; 
 GeneratorTest test; 
 
@@ -44,11 +44,12 @@ void UI() {
   b.update();
   b.draw(); 
 
-  Polinomio f3 = new Polinomio(frameCount % 3 + 1);
+  Polinomio f3 = new Polinomio(frameCount % 8 + 1);
 
   // Agregar gráfica
-  if ( b.isMousePressed() ) {
+  if ( b.isMousePressed() && toChange) {
     grafica.addElement(f3);
+    toChange = false; 
   }
 
   // Texto
@@ -70,7 +71,7 @@ void draw() {
 
 
 void mousePressed() {
-  toChange = true; 
+   
 }
 
 void mouseReleased() {
