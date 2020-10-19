@@ -285,7 +285,8 @@ Devuelve la cantidad de nodos en la lista.
 
 Imprime la lista de todos los elementos de menor a mayor.
 <p>
-     ## `public class Polinomio implements Element`
+     
+   ## `public class Polinomio implements Element`
 
 Polinomio ( Polinomio ) implementacion para obtener los puntos de un polinomio
 
