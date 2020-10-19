@@ -48,7 +48,8 @@ class GeneratorTest {
         output.println(i + " "  + dataList[i].value.time);
         total += dataList[i].value.time; 
       }
-
+        
+      output.println("TOTAL: " + total); 
       output.close();
 
       break; 

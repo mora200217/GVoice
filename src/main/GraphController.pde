@@ -124,7 +124,8 @@ class GraphController {
     // Desencolamos de la cola de renderizado por un máximo
     // de gráficas por ciclo. El ciclo 
 
-    if (this.hasToGenerate) {
+    if (this.hasToGenerate||this.mouseDragged()) {
+      background(255);
       this.axis.draw(); // Ejes dibujados 
       for (int j = 0; j < 1; j++) {
         memoria= inScreen.dequeue();
@@ -136,7 +137,7 @@ class GraphController {
       hasToGenerate = false;
     }
 
-    image(this.imgToShow, 0, 0);
+    // image(this.imgToShow, 0, 0);
   }
 
   public Element headReference() {
@@ -172,6 +173,7 @@ class GraphController {
     // Mouse drag
     if ( this.mouseDragged() ) {
       dragPositions.push(new PVector(mouseX, mouseY));
+      this.hasToGenerate = true; 
     } else if (!dragPositions.empty() && dragPositions.numInside < 2) {
       dragPositions.pop();
     }

@@ -36,10 +36,8 @@ void setup() {
 
 //-----------------------------------------
 void render() {
-  int count = millis();
-  grafica.draw();
-  int finalTime = millis() - count; 
-  System.out.printf("Tiempo: %d ms - Count: %d \n", finalTime, count2);
+  grafica.draw(); 
+  
 }
 
 // -----------------------------------------
@@ -59,18 +57,17 @@ void UI() {
 
 // -----------------------------------------
 void draw() {
-  background(255, 255, 255, 23);
+  // background(255, 255, 255, 23);
+  
   test.beginSample();
   render(); 
   UI();
   test.endSample();
-  delay(23); 
-  image(grafica.imgToShow, 230, 23);
+  
+  // image(grafica.imgToShow, 230, 23);
 }
 
 void mousePressed() {
-  println("Reporte generado"); 
-  test.createReport("txt"); 
   // render = true; 
   count2 = 0;
 }
