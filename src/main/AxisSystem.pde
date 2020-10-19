@@ -37,9 +37,7 @@ class AxisSystem {
 
     // Texto 
     fill(23); 
-    text("y", 20, 20);
-    text("x", this.origin.x + this.dimension.x / 2 - 15, this.origin.y + 15);
-
-    //     if()
+    text("y", this.origin.x - 15, 20);
+    text("x", width - 20, this.origin.y + 15);
   }
 }

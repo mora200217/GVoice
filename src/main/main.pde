@@ -4,12 +4,14 @@ GraphController grafica;
 PGraphics ui; 
 boolean render = true; 
 int count2 = 0; 
-int val = 0;
-
+int val = 1;
+boolean toChange = false; 
+PGraphics image; 
 GeneratorTest test; 
 
 // -----------------------------------------
 void setup() {
+
   test = new GeneratorTest(); 
   //int count = millis();
   val = 0;
@@ -33,41 +35,46 @@ void setup() {
 
   grafica.setDimension(width, height);
 }
-
-//-----------------------------------------
-void render() {
-  grafica.draw(); 
-  
-}
-
 // -----------------------------------------
 
 void UI() {
-  Button b = new Button(80, 40, 40);
+  float B_RAD = 40; 
+  float OFFSET = 15; 
+  Button b = new Button(width - B_RAD - OFFSET, height - B_RAD - OFFSET, B_RAD);
   b.update();
   b.draw(); 
 
-  Polinomio f3=new Polinomio(frameCount % 3 + 1);
-  if (b.isMousePressed()) {
+  Polinomio f3 = new Polinomio(frameCount % 3 + 1);
+
+  // Agregar gráfica
+  if ( b.isMousePressed() ) {
     grafica.addElement(f3);
-    grafica.generateImage();
   }
+
+  // Texto
+  fill(12); 
+  text("GVoice v1.0", 20, 20 );
+  fill(50); 
+  text("n Graficas: " + grafica.numGraphs(), 20, 35 );
 }
 
 
 // -----------------------------------------
 void draw() {
-  // background(255, 255, 255, 23);
-  
-  test.beginSample();
-  render(); 
+  background(255);
+  grafica.draw();
+
+
   UI();
-  test.endSample();
-  
-  // image(grafica.imgToShow, 230, 23);
 }
 
+
 void mousePressed() {
-  // render = true; 
-  count2 = 0;
+  toChange = true; 
+}
+
+void mouseReleased() {
+  
+  toChange = true; 
+  grafica.generateImage();
 }
