@@ -48,6 +48,8 @@ retorna la cantidad de elementos en la cola.
  * **Returns:** {Integer} -numero elementos en la cola. 
 
      <p>
+     
+     
      ## `public class RefQueue<T> implements QueueGen<T>`
 
 Cola Referencias ( RefQueue )
