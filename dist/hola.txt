@@ -1,5 +1,0 @@
-hola
-soy
-miguel
-probando
-GIT
