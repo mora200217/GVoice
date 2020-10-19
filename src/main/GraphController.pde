@@ -133,6 +133,7 @@ class GraphController {
         inScreen.enqueue(memoria);
       }
 
+      
       imgToShow = this.generateImage();
       hasToGenerate = false;
     }
