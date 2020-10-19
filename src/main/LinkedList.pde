@@ -92,23 +92,23 @@ public class LinkedList<T> {
    **/
   boolean pushRear(Node nodeToRear) {
     nodeToRear.setPrev(this.rear); 
-    if (this.rear == null){
-       this.rear = nodeToRear;
-       return true; 
+    if (this.rear == null) {
+      this.front = this.rear = nodeToRear;
+      return true;
     }
-      
+
     this.rear.setNext(nodeToRear); 
     this.rear = nodeToRear;
     this.n++; 
     return true;
   }
 
-  boolean pushRear(T data) {
-    this.pushRear(new Node<T>(data));
-    return true;
+
+  void pushRear(T e) {
+    this.pushRear(new Node<T>(e));
   }
   /**
-   *  Hace pop del último elemento.
+   *  Hace pop del últmo elemento.
    *
    *  Retorna el último Nodo de la lista y lo elimina.
    *  
@@ -204,5 +204,19 @@ public class LinkedList<T> {
       np = np.getNext();
     }
     System.out.printf("\n");
+  }
+
+  Node[] getNodesList() {
+    Node<T> np = this.front;
+
+    Node[] s = new Node[this.n + 1];
+    int c = 0;
+
+    while (np != null) {
+      s[c] = np; 
+      c++; 
+      np = np.next;
+    }
+    return s;
   }
 }

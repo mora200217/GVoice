@@ -124,7 +124,7 @@ class GraphController {
     // Desencolamos de la cola de renderizado por un máximo
     // de gráficas por ciclo. El ciclo 
 
-    if (this.hasToGenerate||this.mouseDragged()) {
+    if (this.hasToGenerate) {
       this.axis.draw(); // Ejes dibujados 
       for (int j = 0; j < 1; j++) {
         memoria= inScreen.dequeue();
@@ -135,6 +135,7 @@ class GraphController {
       imgToShow = this.generateImage();
       hasToGenerate = false;
     }
+
     image(this.imgToShow, 0, 0);
   }
 

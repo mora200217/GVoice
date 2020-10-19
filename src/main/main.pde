@@ -5,9 +5,12 @@ PGraphics ui;
 boolean render = true; 
 int count2 = 0; 
 int val = 0;
+
+GeneratorTest test; 
+
 // -----------------------------------------
 void setup() {
-
+  test = new GeneratorTest(); 
   //int count = millis();
   val = 0;
   size(700, 500);
@@ -56,15 +59,18 @@ void UI() {
 
 // -----------------------------------------
 void draw() {
-  //background(255, 255, 255, 23);
+  background(255, 255, 255, 23);
+  test.beginSample();
   render(); 
   UI();
+  test.endSample();
   delay(23); 
   image(grafica.imgToShow, 230, 23);
 }
 
 void mousePressed() {
-
+  println("Reporte generado"); 
+  test.createReport("txt"); 
   // render = true; 
   count2 = 0;
 }
