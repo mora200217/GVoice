@@ -189,3 +189,94 @@ retorna si la pila esta vacia o no.
  * **Returns:** {Boolean} -esta vacia. 
 
      <p>
+## `public class LinkedList<T>`
+
+Lista Enlazada ( LinkedList )
+
+Estructura basada en enlazamiento de instancias de tipo Nodo, por referencias. Consta de dos Nodos principales: - { Node } front: referencia al nodo cabeza de la lista (primero) - { Node } rear: referencia al nodo cola de la lista (último)
+
+## `boolean isEmpty()`
+
+Verifica que no esté vacía la lista.
+
+ * **Returns:** { boolean } - si el front es null, la lista está vacía.
+
+## `boolean pushFront(Node element)`
+
+Agrega un elemento al frente de la lista.
+
+ * **Parameters:** `{` — Node } Element - Nodo a agregar a la lista.
+ * **Returns:** { Boolean } - Éxito del proceso. 
+
+     <p>
+
+## `void handleException()`
+
+Maneja Excepción de espacio.
+
+En caso de heredar la clase, implementar este método acorde a la clase creada.
+
+## `Node popFront()`
+
+Devuelve el Nodo de front.
+
+ * **Returns:** { Node } newNode - Nodo frontal de la lista.
+
+## `boolean pushRear(Node nodeToRear)`
+
+Agrega un nodo al final de la lista.
+
+ * **Parameters:** `{` — Node } nodeToRear - Nodo a agregar.
+ * **Returns:** { Boolean } Proceso éxitoso.
+
+     <p>
+
+## `Node popRear()`
+
+Hace pop del últmo elemento.
+
+Retorna el último Nodo de la lista y lo elimina.
+
+ * **Returns:** { Node } toReturn - El último nodo. 
+
+     <p>
+
+## `Node getFromPosition(int i)`
+
+Retorna el nodo en la posición dada.
+
+En caso de no encontrar ingresar una posición inválida, se genera un error.
+
+ * **Parameters:** `{` — int } i - Posición a buscar. 
+
+     ®return { Node } walker - Nodo encontrado en la posición.
+
+     <p>
+
+## `void pushAfter(Node node, int i)`
+
+Agrega un nodo después de la posición indicada.
+
+ * **Parameters:**
+   * `{` — Node } node - nodo a agregar.
+   * `{` — int } i -  posición previa del nodo a agregar.
+
+## `void pushBefore(Node node, int i)`
+
+Agrega un nodo antes de la posición indicada.
+
+ * **Parameters:**
+   * `{` — Node } node - nodo a agregar.
+   * `{` — int } i -  posición posterior del nodo a agregar. 
+
+     <p>
+
+## `int amountOfElements()`
+
+Devuelve la cantidad de nodos en la lista.
+
+ * **Returns:** {Integer} this.n - cantidad de nodos.
+
+## `void printElements()`
+
+Imprime la lista de todos los elementos de menor a mayor.
