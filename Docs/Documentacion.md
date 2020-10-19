@@ -280,3 +280,52 @@ Devuelve la cantidad de nodos en la lista.
 ## `void printElements()`
 
 Imprime la lista de todos los elementos de menor a mayor.
+<p>
+     ## `public class Polinomio implements Element`
+
+Polinomio ( Polinomio ) implementacion para obtener los puntos de un polinomio
+
+## `public float y(float x)`
+
+Retorna el valor de y para cada x.
+
+ * **Parameters:** `{Float}` — X a evaluar.
+ * **Returns:** {Float} el punto de Y para el X dado. 
+
+     <p>
+
+## `public float[] getPoints(GraphController h)`
+
+Retorna los puntos de y para el eje coordenado.
+
+ * **Parameters:** `{GraphController}` — sistema grafico donde se va a evaluar.
+ * **Returns:** {Float[]} los puntos de Y para el sistema grafico. 
+
+     <p>
+
+## `public int grado()`
+
+Retorna el grado del polinomio.
+
+ * **Parameters:** `{}` — .
+ * **Returns:** {int} el grado del polinomio. 
+
+     <p>
+
+## `public float getDelta()`
+
+Retorna el delta evaluado.
+
+ * **Parameters:** `{}` — .
+ * **Returns:** {Float} retorna delta. 
+
+     <p>
+
+## `public void suma(Polinomio b)`
+
+permite la suma de un polinimo menor o igual al actual.
+
+ * **Parameters:** `{Polinimio}` — .
+ * **Returns:** {} -exito del proceso. 
+
+     <p>
