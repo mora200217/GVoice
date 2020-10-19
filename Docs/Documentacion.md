@@ -150,6 +150,7 @@ retorna la cantidad de elementos en la cola.
  * **Returns:** {Intiger} -numero elementos en la cola. 
 
      <p>
+     
      ## `public class RefStack<T> implements StackGen<T>`
 
 Pila Ref ( RefStack )
