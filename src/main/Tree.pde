@@ -5,12 +5,16 @@ public class Tree<T> {
   private class SingleNode
   { 
     T Data;
+    T characteristics[];
     SingleNode next[];
   }
   public Tree() {
-    String[] lines = loadStrings("Hello.txt");
+    String[] lines = loadStrings("Tree.txt");
+    int cont = 0 ;
+
+    
     for (int i = 0 ; i < lines.length; i++) {
-      if(lines[i].charAt(0) != 9){
+      if(lines[i].charAt(0) != 46){
       
       }
       for(int h = 0; h < lines[i].length(); h++){
