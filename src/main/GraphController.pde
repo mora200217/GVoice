@@ -6,7 +6,7 @@ class GraphController {
   private boolean visibility; // Is Visible ?   
   private boolean rendering;  // Will render ? 
   private int MAX_GRAPHS_PER_CYCLE = 1;   
-
+  private float zoomVal=5;
   public PGraphics imgToShow; 
   private boolean hasToGenerate = true; 
   // private PImage bg; 
@@ -40,6 +40,12 @@ class GraphController {
 
   public PVector getOrigin() {
     return this.origin;
+  }
+  public void setZoom(float zoom) {
+    zoomVal=zoom;
+  }
+  public float getZoom() {
+    return zoomVal;
   }
 
   public int numGraphs() {
@@ -163,7 +169,6 @@ class GraphController {
 
       System.out.printf("x: %.2f, y: %.2f\n", finalPos.x, finalPos.y);
       this.axis.setOrigin(finalPos.x, finalPos.y);
-
     }
   }
 }

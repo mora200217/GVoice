@@ -60,9 +60,10 @@ public class Polinomio implements Element {
   public float[] getPoints(GraphController h) {
     //
     float size=h.getDimension().x;
+    float zoom=h.getZoom();
     float[]points= new float [ceil(size/this.delta)];
     for (float i=0; i<size; i+=delta) {
-      points[int(i/delta)]=this.y(i-size/2);
+      points[int(i/delta)]=this.y((i-size/2)/zoom);
     }
     return points;
   }
