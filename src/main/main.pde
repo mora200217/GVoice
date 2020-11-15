@@ -12,7 +12,7 @@ void setup() {
   
   
   //int count = millis();
-  val = 10000;
+  val = 1000000;
   size(700, 500);
   ui = createGraphics(40, 40);
   surface.setTitle(APP_NAME);
@@ -40,7 +40,7 @@ void render() {
     long count = System.nanoTime();
     grafica.draw();
     long finalTime =System.nanoTime() - count; 
-    System.out.printf("Tiempo: %d ms - Count: %d \n", finalTime, count2);
+    System.out.printf("Tiempo: %d ns - Count: %d \n", finalTime, count2);
     if ( count2  == val ) 
       render = false;
     count2 ++;
