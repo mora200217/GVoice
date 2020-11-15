@@ -85,7 +85,7 @@ class GraphController {
     pg.beginDraw(); 
 
     pg.push();
-    pg.translate(this.axis.getOrigin().x -this.getDimension().x/2 , this.axis.getOrigin().y);
+    pg.translate(this.getOrigin().x -this.getDimension().x/2 , this.getOrigin().y);
     pg.rotate(radians(180));
     pg.scale(-1, 1);
     pg.noFill(); 

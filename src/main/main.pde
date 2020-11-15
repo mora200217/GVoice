@@ -74,8 +74,11 @@ void draw() {
 }
 
 
-void mousePressed() {
-   // grafica.setZoom(1.1*grafica.getZoom());
+void keyPressed(){
+   if(key == CODED)
+     if(keyCode == UP)
+     grafica.setZoom(1.1*grafica.getZoom()); 
+     else if(keyCode == UP)
 }
 void mouseWheel(MouseEvent event) {
   float e = event.getCount();

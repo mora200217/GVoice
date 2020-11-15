@@ -63,8 +63,8 @@ public class Polinomio implements Element {
     float zoom=h.getZoom();
     float[]points= new float [ceil(size/this.delta)];
     for (float i=0; i<size; i+=delta) {
-      points[int(i/delta)]= this.y((i-(size/2))/zoom - 10);
-    }
+      points[int(i/(delta))]= (this.y((i-(h.axis.getOrigin().x )) / zoom ))*zoom - (h.axis.getOrigin().y -h.getDimension().y / 2); // xd
+    } //<>//
     return points;
   }
   /**
