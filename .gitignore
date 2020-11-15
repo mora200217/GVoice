@@ -1,7 +1,7 @@
 
 # Created by https://www.toptal.com/developers/gitignore/api/processing,macos,windows,java
 # Edit at https://www.toptal.com/developers/gitignore?templates=processing,macos,windows,java
-
+.DS*
 ### Java ###
 # Compiled class file
 *.class
@@ -61,13 +61,7 @@ Temporary Items
 
 ### Processing ###
 applet
-application.linux-arm64
-application.linux-armv6hf
-application.linux32
-application.linux64
-application.windows32
-application.windows64
-application.macosx
+
 out
 
 ### Windows ###

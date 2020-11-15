@@ -1,16 +1,20 @@
-
 String APP_NAME = "GVoice";  
 int keyVal = 0;  // 1 Ivan 2 Juanfer 3 Miguel 4 Morales
 GraphController grafica; 
 PGraphics ui; 
 boolean render = true; 
 int count2 = 0; 
-int val = 0; 
+int val = 1;
+boolean toChange = true; 
+PGraphics image; 
+GeneratorTest test; 
+
+UI gui; 
 
 // -----------------------------------------
 void setup() {
-  
-  
+  gui = new UI(width, height); 
+  test = new GeneratorTest(); 
   //int count = millis();
   val = 0;
   size(700, 500);
@@ -32,56 +36,59 @@ void setup() {
   //print((millis()-count));
 
   grafica.setDimension(width, height);
-  background(255);
 }
-
-//-----------------------------------------
-void render() {
-  Element test = grafica.headReference(); 
-
-  if (render) {
-
-    int count = millis();
-    grafica.draw();
-    int finalTime = millis() - count; 
-    System.out.printf("Tiempo: %d ms - Count: %d \n", finalTime, count2);
-    if ( count2  == val ) 
-      render = false;
-    count2 ++;
-  }
-}
-
-
 // -----------------------------------------
 
 void UI() {
- ui.beginDraw(); 
-  Button b = new Button(80, 40, 40);
+
+  float B_RAD = 40; 
+  float OFFSET = 15; 
+  Button b = new Button(width - B_RAD - OFFSET, height - B_RAD - OFFSET, B_RAD);
   b.update();
   b.draw(); 
-  grafica.draw();
-  Polinomio f3=new Polinomio(frameCount % 3 + 1);
-  if (b.isMousePressed())
+
+  Polinomio f3 = new Polinomio(frameCount % 8 + 1);
+
+  // Agregar gráfica
+  if ( b.isMousePressed() && toChange) {
     grafica.addElement(f3);
-  ui.endDraw(); 
+    toChange = false;
+  }
+
+  // Texto
+  fill(12); 
+  text("GVoice v1.0", 20, 20 );
+  fill(50); 
+  text("n Graficas: " + grafica.numGraphs(), 20, 35 );
 }
 
 
 // -----------------------------------------
 void draw() {
 
-
-  render(); 
-  UI();
-  image(ui, 0,0); 
-}
-
-
-void mousePressed() {
-  //background(255);
-  render = true; 
-  count2 = 0;
-}
-void mouseDragged() {
   background(255);
+  grafica.draw();
+  gui.show(); 
+
+  UI();
+}
+
+
+void keyPressed(){
+   if(key == CODED)
+     if(keyCode == UP)
+     grafica.setZoom(1.1*grafica.getZoom()); 
+     else if(keyCode == UP)
+}
+void mouseWheel(MouseEvent event) {
+  float e = event.getCount();
+  if (e>0)
+    grafica.setZoom(1.1*grafica.getZoom());
+  else
+    grafica.setZoom(grafica.getZoom()/1.1);
+  grafica.generateImage();
+}
+void mouseReleased() { 
+  toChange = true; 
+  grafica.generateImage();
 }

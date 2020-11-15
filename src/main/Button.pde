@@ -28,20 +28,23 @@ class Button {
       this.scale(0.1);
       isScaled = false;
     }
-    
+
     if (this.isMousePressed())
-      print("Pressed"); 
-    
+      print("Pressed");
   }
 
 
   public void draw() {
     if (this.isMouseOver())
       cursor(HAND);
-
     noStroke(); 
-    fill(23, 23, 123); 
+    fill(23, 23, 23); 
     ellipse(this.pos.x, this.pos.y, this.RAD + this.offset, this.RAD + this.offset);
+    rectMode(CENTER); 
+    fill(255);
+    rect(this.pos.x, this.pos.y, this.RAD * 3/7, 3);
+    rect(this.pos.x, this.pos.y, 3, this.RAD * 3/7);
+    rectMode(LEFT); 
   }
 
   public boolean isMousePressed() {
@@ -53,7 +56,7 @@ class Button {
   }
 
   public void scale(float s) {
-   
+
     this.offset *= s;
   }
 
