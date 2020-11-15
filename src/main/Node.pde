@@ -12,7 +12,7 @@ class Node<T> {
   public Node(T value) {
     this.value = value;
   }
-  public  Node() {
+  public Node() {
     this.value = null;
   }
   /**
@@ -47,4 +47,4 @@ class Node<T> {
   public Node getPrev() {
     return this.prev;
   }
-}
+  }

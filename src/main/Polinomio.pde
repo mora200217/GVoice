@@ -43,7 +43,7 @@ public class Polinomio implements Element {
    *  @param {Float} X a evaluar.
    *  @return{Float} el punto de Y para el X dado. 
    **/
-  public float y(float x) {
+  public float getY(float x) {
     float valor = 0;
     for (int i =0; i<=grado; i++) {
       valor+=(coef[i]*pow(x, i));
@@ -62,9 +62,9 @@ public class Polinomio implements Element {
     float size=h.getDimension().x;
     float[]points= new float [ceil(size/this.delta)];
     for (float i=0; i<size; i+=delta) {
-      points[int(i/delta)]=this.y(i-size/2);
+      points[int(i/delta)]=this.getY(i-size/2);
     }
-    return points;
+    return points; //<>//
   }
   /**
    *  Retorna el grado del polinomio.
@@ -98,4 +98,12 @@ public class Polinomio implements Element {
       a.coef[i] += b.coef[i];
     }
   }
+  
+  public Polinomio derivate(){
+    float[] arrayaux = new float[grado];
+    for(int i = 1; i < grado+1;i++)
+      arrayaux[i-1] = coef[i]*i;
+    return new Polinomio(arrayaux,grado-1);
+  }
+
 }

@@ -1,4 +1,3 @@
-
 class AxisSystem {
   private float[] xInterval = {-10, 10};
   private float[] yInterval = {-10, 10};

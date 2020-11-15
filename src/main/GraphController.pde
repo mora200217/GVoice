@@ -12,7 +12,7 @@ class GraphController {
   // private PImage bg; 
 
   private Stack<PVector> dragPositions; 
-  private QueueGen<Element>inScreen=new RefQueue();
+  private QueueGen<Polinomio>inScreen=new RefQueue();
   private LinkedList<Float> valuesToGraph = new LinkedList(); 
 
 
@@ -67,14 +67,13 @@ class GraphController {
     this.dimension = new PVector(x, y);
     this.axis.setDimension(x, y);
   }
-  public void addElement(Element cosa) {
+  public void addElement(Polinomio cosa) {
     inScreen.enqueue(cosa);
   }
 
-  private void savePoints(Element e) {
+  private void savePoints(Polinomio e) {
     float points[] = e.getPoints(this);
     PGraphics pg = createGraphics(width, height); // CAMBIAR
-
     pg.beginDraw(); 
 
     pg.push();
@@ -88,13 +87,13 @@ class GraphController {
       pg.curveVertex(i* e.getDelta(), points[i]);
     pg.endShape();
     pg.pop();
-
+    
     pg.endDraw(); 
     graphsArray.push(pg);
   }
 
   public PGraphics generateImage() {
-    Element memoria;
+    Polinomio memoria;
 
     for (int j = 0; j < inScreen.numInside(); j++) {
       memoria= inScreen.dequeue();
