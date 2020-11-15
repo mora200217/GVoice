@@ -6,7 +6,7 @@ class GraphController {
   private boolean visibility; // Is Visible ?   
   private boolean rendering;  // Will render ? 
   private int MAX_GRAPHS_PER_CYCLE = 1;   
-  private float zoomVal=5;
+  private float zoomVal=10;
   public PGraphics imgToShow; 
   private boolean hasToGenerate = true; 
   // private PImage bg; 
@@ -84,14 +84,14 @@ class GraphController {
     pg.beginDraw(); 
 
     pg.push();
-    pg.translate(this.axis.getOrigin().x - this.getDimension().x/2, this.axis.getOrigin().y);
+    pg.translate(this.axis.getOrigin().x -this.getDimension().x/2 , this.axis.getOrigin().y);
     pg.rotate(radians(180));
     pg.scale(-1, 1);
     pg.noFill(); 
     pg.stroke(23);
     pg.beginShape();
     for (int i = 0; i < points.length; i ++)
-      pg.curveVertex(i* e.getDelta(), points[i]);
+      pg.curveVertex(i*e.getDelta(), points[i]);
     pg.endShape();
     pg.pop();
 

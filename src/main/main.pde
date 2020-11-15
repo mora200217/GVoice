@@ -73,9 +73,15 @@ void draw() {
 void mousePressed() {
    
 }
-
-void mouseReleased() {
-  
+void mouseWheel(MouseEvent event) {
+  float e = event.getCount();
+  if(e>0)
+   grafica.setZoom(1.1*grafica.getZoom());
+   else
+    grafica.setZoom(grafica.getZoom()/1.1);
+  grafica.generateImage();
+}
+void mouseReleased() { 
   toChange = true; 
   grafica.generateImage();
 }
