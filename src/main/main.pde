@@ -9,9 +9,11 @@ boolean toChange = true;
 PGraphics image; 
 GeneratorTest test; 
 
+UI gui; 
+
 // -----------------------------------------
 void setup() {
-
+  gui = new UI(width, height); 
   test = new GeneratorTest(); 
   //int count = millis();
   val = 0;
@@ -38,6 +40,7 @@ void setup() {
 // -----------------------------------------
 
 void UI() {
+
   float B_RAD = 40; 
   float OFFSET = 15; 
   Button b = new Button(width - B_RAD - OFFSET, height - B_RAD - OFFSET, B_RAD);
@@ -49,7 +52,7 @@ void UI() {
   // Agregar gráfica
   if ( b.isMousePressed() && toChange) {
     grafica.addElement(f3);
-    toChange = false; 
+    toChange = false;
   }
 
   // Texto
@@ -62,22 +65,23 @@ void UI() {
 
 // -----------------------------------------
 void draw() {
+
   background(255);
   grafica.draw();
-
+  gui.show(); 
 
   UI();
 }
 
 
 void mousePressed() {
-   
+   // grafica.setZoom(1.1*grafica.getZoom());
 }
 void mouseWheel(MouseEvent event) {
   float e = event.getCount();
-  if(e>0)
-   grafica.setZoom(1.1*grafica.getZoom());
-   else
+  if (e>0)
+    grafica.setZoom(1.1*grafica.getZoom());
+  else
     grafica.setZoom(grafica.getZoom()/1.1);
   grafica.generateImage();
 }

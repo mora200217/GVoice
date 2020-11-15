@@ -9,7 +9,7 @@ public class Polinomio implements Element {
   public PVector pos=new PVector(0, 0);
   public Polinomio(int gradot) {
     grado=gradot;
-    this.delta=1;
+    this.delta= 1;
     this.pos=new PVector(0, 0);
     if (grado < 0) {
 
@@ -63,7 +63,7 @@ public class Polinomio implements Element {
     float zoom=h.getZoom();
     float[]points= new float [ceil(size/this.delta)];
     for (float i=0; i<size; i+=delta) {
-      points[int(i/delta)]=this.y((i-(size/2))/zoom);
+      points[int(i/delta)]= this.y((i-(size/2))/zoom - 10);
     }
     return points;
   }

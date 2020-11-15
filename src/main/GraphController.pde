@@ -6,7 +6,8 @@ class GraphController {
   private boolean visibility; // Is Visible ?   
   private boolean rendering;  // Will render ? 
   private int MAX_GRAPHS_PER_CYCLE = 1;   
-  private float zoomVal=10;
+  private float zoomVal=1
+  ;
   public PGraphics imgToShow; 
   private boolean hasToGenerate = true; 
   // private PImage bg; 

@@ -43,7 +43,8 @@ class Button {
     rectMode(CENTER); 
     fill(255);
     rect(this.pos.x, this.pos.y, this.RAD * 3/7, 3);
-    rect(this.pos.x, this.pos.y, 3, this.RAD * 3/7); 
+    rect(this.pos.x, this.pos.y, 3, this.RAD * 3/7);
+    rectMode(LEFT); 
   }
 
   public boolean isMousePressed() {
