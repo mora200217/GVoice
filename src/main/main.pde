@@ -86,7 +86,7 @@ void UI() {
     GeneratorTest gt = new GeneratorTest();
     gt.beginSample();
     
-    for (int test = 0; test < 20; test++) {
+    for (int test = 1; test < 10000; test*= 10) {
       Test2 t3 = new Test2(test + 5);
 
 

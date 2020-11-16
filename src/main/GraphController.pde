@@ -19,7 +19,7 @@ class GraphController {
   private LinkedList<Float> valuesToGraph = new LinkedList(); 
 
 
-  private Stack<PGraphics> graphsArray = new Stack(1000);
+  private Stack<PGraphics> graphsArray = new Stack(10000000);
 
   private AxisSystem axis; 
   private int step = 0; 
