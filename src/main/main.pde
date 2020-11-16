@@ -31,9 +31,9 @@ void setup() {
 
   for (int i = 0; i < val; i++) {
     f2[i] = new Polinomio(i+1);
-    grafica.addElement(f2[i]);
+    grafica.addPolinomio(f2[i]);
   }
-  grafica.addElement(f3);
+  grafica.addPolinomio(f3);
   background(255);
   //print((millis()-count));
 
@@ -56,7 +56,7 @@ void UI() {
   // Agregar gráfica
   if ( b.isMousePressed() && toChange) {
 
-    grafica.addElement(f3);
+    grafica.addPolinomio(f3);
     toChange = false;
   }
 }

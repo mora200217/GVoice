@@ -2,11 +2,11 @@ class GraphController {
   private PVector origin;
   private PVector dimension;
   private int id; 
-  private int amountOfElements; 
+  private int amountOfPolinomios; 
   private boolean visibility; // Is Visible ?   
   private boolean rendering;  // Will render ? 
   private int MAX_GRAPHS_PER_CYCLE = 1;   
-  private RefStack<Element> inScreenStack; 
+  private RefStack<Polinomio> inScreenStack; 
   private float zoomVal=1
   ;
   public PGraphics imgToShow; 
@@ -14,7 +14,7 @@ class GraphController {
   // private PImage bg; 
 
   private Stack<PVector> dragPositions; 
-  public QueueGen<Element>inScreen=new RefQueue();
+  public QueueGen<Polinomio>inScreen=new RefQueue();
   private LinkedList<Float> valuesToGraph = new LinkedList(); 
 
 
@@ -76,12 +76,12 @@ class GraphController {
     this.dimension = new PVector(x, y);
     this.axis.setDimension(x, y);
   }
-  public void addElement(Element cosa) {
+  public void addPolinomio(Polinomio cosa) {
     inScreen.enqueue(cosa);
     inScreenStack.push(cosa); 
   }
 
-  private void savePoints(Element e) {
+  private void savePoints(Polinomio e) {
     float points[] = e.getPoints(this);
     PGraphics pg = createGraphics(width, height); // CAMBIAR
 
@@ -104,7 +104,7 @@ class GraphController {
   }
 
   public PGraphics generateImage() {
-    Element memoria;
+    Polinomio memoria;
 
     for (int j = 0; j < inScreen.numInside(); j++) {
       memoria= inScreen.dequeue();
@@ -135,7 +135,7 @@ class GraphController {
     image(this.imgToShow, this.origin.x, this.origin.y);
   }
 
-  public Element headReference() {
+  public Polinomio headReference() {
     return inScreen.peek();
   }
 
