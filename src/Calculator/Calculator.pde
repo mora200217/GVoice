@@ -64,6 +64,8 @@ void setup() {
   t.insert("7");
   t.insert("+");
   t.insert("123");
+  
+  
   t.printAll();
 
   t.calculate();

@@ -20,7 +20,7 @@ class Node {
     if (this.childs[0] != null)
       this.childs[0].printTree();
 
-
+    print(this.val); 
 
     if (this.childs[1] != null)
       this.childs[1].printTree();
@@ -48,6 +48,7 @@ class Node {
  
 
     this.printTree(); 
+    println("");
 
     if (root.childs[0] != null)
       this.calc(root);
@@ -90,10 +91,12 @@ class Tree {
 
   void printAll() {
     root.printTree();
+    println("");
   }
 
   void calculate() {
     println("Imprimiendo"); 
     this.root.calc(this.root);
+    println(""); 
   }
 }
