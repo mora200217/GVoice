@@ -79,6 +79,7 @@ class GraphController {
   }
   public void addPolinomio(Polinomio cosa) {
     inScreen.enqueue(cosa);
+    // inScreen.enqueue(cosa.derivate());
     inScreenStack.push(cosa);
   }
 
@@ -98,7 +99,7 @@ class GraphController {
     pg.endShape();
     RefQueue<PVector> PC;
     PVector temp;
-    if (e.grado > 1) {
+    if (e.grado > 2) {
       PC = getPC(e, this);
       while (!PC.isEmpty()) {
         temp = PC.dequeue();
@@ -113,7 +114,7 @@ class GraphController {
 
   public PGraphics generateImage() {
     Polinomio memoria;
-
+  
     for (int j = 0; j < inScreen.numInside(); j++) {
       memoria= inScreen.dequeue();
       this.savePoints(memoria); // Guarda los puntos como imagen
@@ -162,7 +163,7 @@ class GraphController {
       cursor(MOVE); 
     else
       cursor(ARROW);
-    
+
     this.axis.zoom = this.zoomVal; 
 
     // Mouse drag

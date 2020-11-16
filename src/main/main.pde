@@ -27,7 +27,7 @@ void setup() {
   grafica.setOrigin(width/2, height/2);
   gui = new UI(width, height, grafica); 
   //print((millis()-count));
-//Heap h = new Heap(f3,grafica);
+  //Heap h = new Heap(f3,grafica);
   //PVector p1 = new PVector(50.51,5.2);
   //h.insertItem(p1);
   //PVector p2 = new PVector(34.5,2);
@@ -70,20 +70,34 @@ void setup() {
 
 void UI() {
 
+
   float B_RAD = 40; 
   float OFFSET = 15; 
   Button b = new Button(width - B_RAD - OFFSET, height - B_RAD - OFFSET, B_RAD);
   b.update();
   b.draw(); 
 
-  float[] t = { 0,2.4,-0.7,-0.43,0.05,0.02}; 
-  float[] t2 = { 0,2.4,-0.7}; 
-  Polinomio f3 = new Polinomio(t, 5);
-   Polinomio f4 = new Polinomio(t2, 2);
+
   // Agregar gráfica
   if ( b.isMousePressed() && toChange) {
-    grafica.addPolinomio(f4);
-    grafica.addPolinomio(f3);
+    // grafica.addPolinomio(f4);
+    // grafica.addPolinomio(f3);
+
+    GeneratorTest gt = new GeneratorTest();
+    gt.beginSample();
+    
+    for (int test = 0; test < 20; test++) {
+      Test2 t3 = new Test2(test + 5);
+
+
+      grafica.inScreen = t3.createSamples();
+
+
+      grafica.generateImage();
+      gt.step(); 
+    }
+    gt.endSample();
+    gt.createReport("txt"); 
     toChange = false;
   }
 }

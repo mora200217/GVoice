@@ -12,7 +12,7 @@ class GeneratorTest {
   private long countTime, countSize; 
   private LinkedList<Record> data; 
   private boolean hasSentRecord = false; 
-
+  
   GeneratorTest() {
     println("Iniciando generador de prueba");
     data = new LinkedList<Record>();
@@ -29,6 +29,14 @@ class GeneratorTest {
 
   private void step(long time) {
     println(time / 1000000);
+    data.pushRear(new Record((int) time / 1000000));
+  }
+
+
+  private void step() {
+    long timet = System.nanoTime();
+    long time = timet - countTime; 
+    countTime = timet; 
     data.pushRear(new Record((int) time / 1000000));
   }
 

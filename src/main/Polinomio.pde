@@ -64,7 +64,7 @@ public class Polinomio implements Element {
       //println(valor);
     }
     return valor;
-  }
+  } //<>//
   /** //<>//
    *  Retorna los puntos de y para el eje coordenado.
    *  
@@ -99,6 +99,8 @@ public class Polinomio implements Element {
     return delta;
   }
 
+
+  
   public color getColor() {
     return this.c;
   }

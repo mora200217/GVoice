@@ -34,7 +34,7 @@ RefQueue<PVector> getPC(Polinomio pol, GraphController graph){
   //}
   
   aux2 = h.removeMin();
-  while((aux2.y - 0) <=(pol.grado*0.18)){
+  while((aux2.y - 0) <=(pol.grado*0.2)){
     min.enqueue(aux2);
     System.out.printf("removeMin ... aux.x: %.2f, aux.y: %.2f\n",aux2.x,aux2.y);
     aux2 = h.removeMin();
