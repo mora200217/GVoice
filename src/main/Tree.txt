@@ -1,0 +1,15 @@
+Circulo
+.radio
+.centro
+Elipse
+.radiomayor
+.radiomenor
+.centro
+Parabola
+.foco
+.vertice
+.coef
+.variable
+Polinomio
+.coef
+.grado

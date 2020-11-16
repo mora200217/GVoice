@@ -2,12 +2,13 @@
  * Elipse ( Elipse )
  * implementacion para obtener los puntos de una ellipse
  */
-public class Elipse implements Element {
+public class Elipse implements Element{
   //Declaración de variables funcionales tanto para la elipse como para el círculo 
   PVector centroide = new PVector(0, 0);
   private float radio_may = 1;
   private float radio_men = 1;
   private float delta=0;
+  private boolean isNull = false; 
   public int control=0;
   //Constructor para el círculo 
   public Elipse(float x, float y, float radio) {
@@ -24,6 +25,10 @@ public class Elipse implements Element {
     this.centroide.y = y;
     this.radio_may = may;
     this.radio_men = men;
+  }
+
+  public color getColor() {
+    return color(2, 4, 5);
   }
   /**
    *  Retorna dos valores de y para cada x.
@@ -61,6 +66,16 @@ public class Elipse implements Element {
     }
     return points;
   }
+
+  public void nullify() {
+    this.isNull = true;
+  }
+
+  public boolean isNull() {
+    return this.isNull;
+  }
+
+
   /**
    *  Retorna el delta evaluado.
    *  

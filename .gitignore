@@ -1,10 +1,12 @@
 
 # Created by https://www.toptal.com/developers/gitignore/api/processing,macos,windows,java
 # Edit at https://www.toptal.com/developers/gitignore?templates=processing,macos,windows,java
-
+.DS_Store*
 ### Java ###
 # Compiled class file
 *.class
+
+
 
 # Log file
 *.log

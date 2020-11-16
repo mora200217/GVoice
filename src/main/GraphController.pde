@@ -1,22 +1,25 @@
+
 class GraphController {
   private PVector origin;
   private PVector dimension;
   private int id; 
-  private int amountOfElements; 
+  private int amountOfPolinomios; 
   private boolean visibility; // Is Visible ?   
   private boolean rendering;  // Will render ? 
   private int MAX_GRAPHS_PER_CYCLE = 1;   
-
+  private RefStack<Polinomio> inScreenStack; 
+  private float zoomVal=1
+    ;
   public PGraphics imgToShow; 
   private boolean hasToGenerate = true; 
   // private PImage bg; 
 
   private Stack<PVector> dragPositions; 
-  private QueueGen<Element>inScreen=new RefQueue();
+  public QueueGen<Polinomio>inScreen=new RefQueue();
   private LinkedList<Float> valuesToGraph = new LinkedList(); 
 
 
-  private Stack<PGraphics> graphsArray = new Stack(1000);
+  private Stack<PGraphics> graphsArray = new Stack(10000000);
 
   private AxisSystem axis; 
   private int step = 0; 
@@ -29,6 +32,7 @@ class GraphController {
   }
 
   public GraphController(float x, float y) {
+    inScreenStack = new RefStack(); 
     imgToShow = createGraphics(width, height); 
     origin = new PVector(x, y); 
     dimension = new PVector(500, 500); 
@@ -40,6 +44,12 @@ class GraphController {
 
   public PVector getOrigin() {
     return this.origin;
+  }
+  public void setZoom(float zoom) {
+    zoomVal=zoom;
+  }
+  public float getZoom() {
+    return zoomVal;
   }
 
   public int numGraphs() {
@@ -67,39 +77,49 @@ class GraphController {
     this.dimension = new PVector(x, y);
     this.axis.setDimension(x, y);
   }
-  public void addElement(Element cosa) {
+  public void addPolinomio(Polinomio cosa) {
     inScreen.enqueue(cosa);
+    // inScreen.enqueue(cosa.derivate());
+    inScreenStack.push(cosa);
   }
 
-  private void savePoints(Element e) {
+  private void savePoints(Polinomio e) {
     float points[] = e.getPoints(this);
     PGraphics pg = createGraphics(width, height); // CAMBIAR
-
     pg.beginDraw(); 
-
     pg.push();
-    pg.translate(this.axis.getOrigin().x - this.getDimension().x/2, this.axis.getOrigin().y);
+    pg.translate(this.getOrigin().x -this.getDimension().x/2, this.getOrigin().y);
     pg.rotate(radians(180));
     pg.scale(-1, 1);
     pg.noFill(); 
-    pg.stroke(23);
+    pg.stroke(e.getColor());
     pg.beginShape();
     for (int i = 0; i < points.length; i ++)
-      pg.curveVertex(i* e.getDelta(), points[i]);
+      pg.curveVertex(i*e.getDelta(), points[i]);
     pg.endShape();
+    RefQueue<PVector> PC;
+    PVector temp;
+    if (e.grado > 2) {
+      PC = getPC(e, this);
+      while (!PC.isEmpty()) {
+        temp = PC.dequeue();
+        pg.fill(0, 255, 0);
+        pg.ellipse(temp.x*zoomVal+this.axis.getOrigin().x, e.y(temp.x)*zoomVal- (this.axis.getOrigin().y -this.getDimension().y / 2), 10, 10);
+      }
+    }
     pg.pop();
-
     pg.endDraw(); 
     graphsArray.push(pg);
   }
 
   public PGraphics generateImage() {
-    Element memoria;
-
+    Polinomio memoria;
+  
     for (int j = 0; j < inScreen.numInside(); j++) {
       memoria= inScreen.dequeue();
       this.savePoints(memoria); // Guarda los puntos como imagen
-      inScreen.enqueue(memoria);
+      if (!memoria.isNull())
+        inScreen.enqueue(memoria);
     }
 
     PGraphics pgf = createGraphics(width, height);
@@ -124,7 +144,7 @@ class GraphController {
     image(this.imgToShow, this.origin.x, this.origin.y);
   }
 
-  public Element headReference() {
+  public Polinomio headReference() {
     return inScreen.peek();
   }
 
@@ -144,6 +164,7 @@ class GraphController {
     else
       cursor(ARROW);
 
+    this.axis.zoom = this.zoomVal; 
 
     // Mouse drag
     if ( this.mouseDragged() ) {
@@ -163,7 +184,6 @@ class GraphController {
 
       System.out.printf("x: %.2f, y: %.2f\n", finalPos.x, finalPos.y);
       this.axis.setOrigin(finalPos.x, finalPos.y);
-
     }
   }
 }

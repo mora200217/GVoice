@@ -31,20 +31,20 @@ public class LinkedList<T> {
 
 
   /**
-   *  Agrega un elemento al frente de la lista. 
-   *  @param { Node } Element - Nodo a agregar a la lista.
+   *  Agrega un Polinomioo al frente de la lista. 
+   *  @param { Node } Polinomio - Nodo a agregar a la lista.
    *  @return  { Boolean } - Éxito del proceso. 
    **/
 
-  boolean pushFront(Node element) {
+  boolean pushFront(Node Polinomio) {
     // Si la lista está vacía 
     if (this.isEmpty()) {
-      this.front = element; 
-      this.rear = element;
+      this.front = Polinomio; 
+      this.rear = Polinomio;
     } else {
-      element.setNext(this.front);
-      this.front.setPrev(element); 
-      this.front = element;
+      Polinomio.setNext(this.front);
+      this.front.setPrev(Polinomio); 
+      this.front = Polinomio;
     }; 
     this.n++; 
     return true;
@@ -108,7 +108,7 @@ public class LinkedList<T> {
     this.pushRear(new Node<T>(e));
   }
   /**
-   *  Hace pop del últmo elemento.
+   *  Hace pop del últmo Polinomioo.
    *
    *  Retorna el último Nodo de la lista y lo elimina.
    *  
@@ -136,7 +136,7 @@ public class LinkedList<T> {
 
   Node getFromPosition(int i) {
     if (i > this.n)
-      throw new IndexOutOfBoundsException("Excediste el límite de los elementos en la lista"); 
+      throw new IndexOutOfBoundsException("Excediste el límite de los Polinomioos en la lista"); 
     else if (i < 0)
       throw new IndexOutOfBoundsException("No se admiten índices negativos"); 
 
@@ -189,15 +189,15 @@ public class LinkedList<T> {
    * 
    * @return {Integer} this.n - cantidad de nodos.
    */
-  int amountOfElements() {
+  int amountOfPolinomios() {
     return this.n;
   }
 
   /**
-   * Imprime la lista de todos los elementos de menor a mayor. 
+   * Imprime la lista de todos los Polinomioos de menor a mayor. 
    *
    **/
-  void printElements() {
+  void printPolinomios() {
     Node np = this.front; 
     while (np != null) {
       System.out.printf("%d ", np.value); 
