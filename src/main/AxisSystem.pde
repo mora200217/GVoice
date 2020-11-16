@@ -43,7 +43,7 @@ class AxisSystem {
       // line(i, this.origin.y - offset, i, this.origin.y + offset);
       fill(0, 80); 
       text((1/this.zoom * (i - this.dimension.x / 2 - (this.origin.x - width/2))), i, this.origin.y + 3 * offset);
-      i += 60;
+      i += 100;
     }
 
     i = this.origin.x;
@@ -51,7 +51,7 @@ class AxisSystem {
       // line(i, this.origin.y - offset, i, this.origin.y + offset);
       fill(0, 80); 
       text( (1/this.zoom * (i - this.dimension.x / 2 - (this.origin.x - width/2))), i, this.origin.y + 3 * offset);
-      i -= 60;
+      i -= 100;
     }
 
 
