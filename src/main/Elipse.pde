@@ -26,6 +26,10 @@ public class Elipse implements Element {
     this.radio_may = may;
     this.radio_men = men;
   }
+
+  public color getColor() {
+    return color(2, 4, 5);
+  }
   /**
    *  Retorna dos valores de y para cada x.
    *  
@@ -62,8 +66,8 @@ public class Elipse implements Element {
     }
     return points;
   }
-  
-    public void nullify() {
+
+  public void nullify() {
     this.isNull = true;
   }
 

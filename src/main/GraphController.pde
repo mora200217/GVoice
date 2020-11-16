@@ -92,7 +92,7 @@ class GraphController {
     pg.rotate(radians(180));
     pg.scale(-1, 1);
     pg.noFill(); 
-    pg.stroke(23);
+    pg.stroke(e.getColor());
     pg.beginShape();
     for (int i = 0; i < points.length; i ++)
       pg.curveVertex(i*e.getDelta(), points[i]);
@@ -154,7 +154,8 @@ class GraphController {
       cursor(MOVE); 
     else
       cursor(ARROW);
-
+    
+    this.axis.zoom = this.zoomVal; 
 
     // Mouse drag
     if ( this.mouseDragged() ) {

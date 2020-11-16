@@ -3,5 +3,7 @@ interface Element{
     abstract public float getDelta();
     
     abstract public void nullify();
-    abstract public boolean isNull();  
+    abstract public boolean isNull();
+    
+    abstract public color getColor();  
    }
