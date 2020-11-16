@@ -6,6 +6,7 @@ class GraphController {
   private boolean visibility; // Is Visible ?   
   private boolean rendering;  // Will render ? 
   private int MAX_GRAPHS_PER_CYCLE = 1;   
+  private RefStack<Element> inScreenStack; 
   private float zoomVal=1
   ;
   public PGraphics imgToShow; 
@@ -13,7 +14,7 @@ class GraphController {
   // private PImage bg; 
 
   private Stack<PVector> dragPositions; 
-  private QueueGen<Element>inScreen=new RefQueue();
+  public QueueGen<Element>inScreen=new RefQueue();
   private LinkedList<Float> valuesToGraph = new LinkedList(); 
 
 
@@ -30,6 +31,7 @@ class GraphController {
   }
 
   public GraphController(float x, float y) {
+    inScreenStack = new RefStack(); 
     imgToShow = createGraphics(width, height); 
     origin = new PVector(x, y); 
     dimension = new PVector(500, 500); 
@@ -76,6 +78,7 @@ class GraphController {
   }
   public void addElement(Element cosa) {
     inScreen.enqueue(cosa);
+    inScreenStack.push(cosa); 
   }
 
   private void savePoints(Element e) {
@@ -106,7 +109,8 @@ class GraphController {
     for (int j = 0; j < inScreen.numInside(); j++) {
       memoria= inScreen.dequeue();
       this.savePoints(memoria); // Guarda los puntos como imagen
-      inScreen.enqueue(memoria);
+      if(!memoria.isNull())
+        inScreen.enqueue(memoria);
     }
 
     PGraphics pgf = createGraphics(width, height);

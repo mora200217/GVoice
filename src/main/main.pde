@@ -13,7 +13,7 @@ UI gui;
 
 // -----------------------------------------
 void setup() {
-  gui = new UI(width, height); 
+  
   test = new GeneratorTest(); 
   //int count = millis();
   val = 0;
@@ -22,7 +22,9 @@ void setup() {
   surface.setTitle(APP_NAME);
   surface.setResizable(true); 
   grafica = new  GraphController(width, height);
+  
   grafica.setOrigin(width/2, height/2);
+  gui = new UI(width, height, grafica); 
   float [] hola={1, 1, 1};
   Polinomio[] f2 = new Polinomio[val];
   Polinomio f3=new Polinomio(3);
@@ -47,19 +49,16 @@ void UI() {
   b.update();
   b.draw(); 
 
-  Polinomio f3 = new Polinomio(frameCount % 8 + 1);
+  float[] t = { random(0,1) / 100,  random(0,1) / 100,  random(0,1) / 100}; 
+
+  Polinomio f3 = new Polinomio(t, 2);
 
   // Agregar gráfica
   if ( b.isMousePressed() && toChange) {
+
     grafica.addElement(f3);
     toChange = false;
   }
-
-  // Texto
-  fill(12); 
-  text("GVoice v1.0", 20, 20 );
-  fill(50); 
-  text("n Graficas: " + grafica.numGraphs(), 20, 35 );
 }
 
 
@@ -74,11 +73,14 @@ void draw() {
 }
 
 
-void keyPressed(){
-   if(key == CODED)
-     if(keyCode == UP)
-     grafica.setZoom(1.1*grafica.getZoom()); 
-     else if(keyCode == UP)
+void keyPressed() {
+  if (key == CODED)
+    if (keyCode == UP)
+      grafica.setZoom(1.1*grafica.getZoom()); 
+    else if (keyCode == UP)
+      grafica.setZoom(0.9*grafica.getZoom());
+
+  grafica.generateImage();
 }
 void mouseWheel(MouseEvent event) {
   float e = event.getCount();
@@ -91,4 +93,8 @@ void mouseWheel(MouseEvent event) {
 void mouseReleased() { 
   toChange = true; 
   grafica.generateImage();
+}
+
+void mouseDragged(){
+   // grafica.generateImage(); 
 }
