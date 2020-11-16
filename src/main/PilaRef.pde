@@ -16,7 +16,7 @@ public class RefStack<T> implements  StackGen<T> {
     head = null;
   }
   /**
-   *  saca un elemento.
+   *  saca un Polinomioo.
    *  Maneja Excepción de espacio.
    *  @param {}.
    *  @return{Type} - Éxito del proceso. 
@@ -30,7 +30,7 @@ public class RefStack<T> implements  StackGen<T> {
     return item;
   }
   /**
-   *  inserta un elemento.
+   *  inserta un Polinomioo.
    *  @param {Type}.
    *  @return{} -Exito del proceso. 
    **/

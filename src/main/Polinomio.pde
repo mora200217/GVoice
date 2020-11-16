@@ -1,3 +1,4 @@
+
 /**
  * Polinomio ( Polinomio )
  * implementacion para obtener los puntos de un polinomio
@@ -6,10 +7,12 @@ public class Polinomio implements Element {
   private float[] coef;
   private int grado;
   private float delta=0;
+  private color c; 
+  private boolean isNull = false; 
   public PVector pos=new PVector(0, 0);
   public Polinomio(int gradot) {
     grado=gradot;
-    this.delta=1;
+    this.delta= 1;
     this.pos=new PVector(0, 0);
     if (grado < 0) {
 
@@ -24,6 +27,7 @@ public class Polinomio implements Element {
     }
   }
   public Polinomio(float[] coeft, int gradot) {
+    this.c = color(random(100, 255),random(100, 255),random(100, 255));  
     grado=gradot;
     this.delta=1;
     if (grado < 0)
@@ -37,6 +41,16 @@ public class Polinomio implements Element {
       coef[i] = coeft[i];
     }
   }
+
+  public void nullify() {
+    this.isNull = true;
+  }
+
+  public boolean isNull() {
+    return this.isNull;
+  }
+
+
   /**
    *  Retorna el valor de y para cada x.
    *  
@@ -50,8 +64,8 @@ public class Polinomio implements Element {
       //println(valor);
     }
     return valor;
-  }
-  /**
+  } //<>//
+  /** //<>//
    *  Retorna los puntos de y para el eje coordenado.
    *  
    *  @param {GraphController} sistema grafico donde se va a evaluar.
@@ -60,9 +74,10 @@ public class Polinomio implements Element {
   public float[] getPoints(GraphController h) {
     //
     float size=h.getDimension().x;
+    float zoom=h.getZoom();
     float[]points= new float [ceil(size/this.delta)];
     for (float i=0; i<size; i+=delta) {
-      points[int(i/delta)]=this.y(i-size/2);
+      points[int(i/(delta))]= (this.y((i-(h.axis.getOrigin().x )) / zoom ))*zoom - (h.axis.getOrigin().y -h.getDimension().y / 2); // xd
     }
     return points;
   }
@@ -74,7 +89,7 @@ public class Polinomio implements Element {
   public int grado() {
     return this.grado;
   }
-    /**
+  /**
    *  Retorna el delta evaluado.
    *  
    *  @param {} .
@@ -83,7 +98,13 @@ public class Polinomio implements Element {
   public float getDelta() {
     return delta;
   }
-    /**
+
+
+  
+  public color getColor() {
+    return this.c;
+  }
+  /**
    *  permite la suma de un polinimo menor o igual al actual.
    *  
    *  @param {Polinimio} .
@@ -97,5 +118,11 @@ public class Polinomio implements Element {
     for (int i = 0; i <= b.grado; i++) {
       a.coef[i] += b.coef[i];
     }
+  }
+   public Polinomio derivate(){
+    float[] arrayaux = new float[grado];
+    for(int i = 1; i < grado+1;i++)
+      arrayaux[i-1] = coef[i]*i;
+    return new Polinomio(arrayaux,grado-1);
   }
 }
