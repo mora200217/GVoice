@@ -23,7 +23,7 @@ public class RefQueue<T> implements  QueueGen<T> {
     count = 0;
   }
   /**
-   *  saca un elemento.
+   *  saca un Polinomioo.
    *  Maneja Excepción de espacio.
    *  @param {}.
    *  @return{Type} - Éxito del proceso. 
@@ -56,7 +56,7 @@ public class RefQueue<T> implements  QueueGen<T> {
     }
   }
   /**
-   *  inserta un elemento.
+   *  inserta un Polinomioo.
    *  @param {Type}.
    *  @return{} -Exito del proceso. 
    **/
@@ -95,9 +95,9 @@ public class RefQueue<T> implements  QueueGen<T> {
     return(false);
   }
   /**
-   *  retorna la cantidad de elementos en la cola.
+   *  retorna la cantidad de Polinomioos en la cola.
    *  @param {}.
-   *  @return{Intiger} -numero elementos en la cola. 
+   *  @return{Intiger} -numero Polinomioos en la cola. 
    **/
   public int numInside() {
     return count;

@@ -23,7 +23,7 @@ public class DynamicArray<T> implements DynamicArrayGen<T> {
     array = (T[]) new Object[N];
   }
   /**
-   *  inserta un elemento en el indice dado si el indice es mayor al del array duplica el tamaño del array.
+   *  inserta un Polinomioo en el indice dado si el indice es mayor al del array duplica el tamaño del array.
    * 
    *  @param {integer,Type} .
    *  @return{} - Éxito del proceso. 
@@ -52,20 +52,20 @@ public class DynamicArray<T> implements DynamicArrayGen<T> {
     }
   }
     /**
-   *  retorna el elemento en el indice dado si el indice es mayor al del array retorna una excepción.
+   *  retorna el Polinomioo en el indice dado si el indice es mayor al del array retorna una excepción.
    *  Maneja Excepción de index maximo.
    *  @param {integer} .
    *  @return{Type} - Éxito del proceso. 
    **/
   public T get(int i) {
-    T elemento;
+    T Polinomioo;
     if(array.length>i){
-     elemento=array[i];
+     Polinomioo=array[i];
     }
     else{
-      throw new RuntimeException("el elemento no existe");
+      throw new RuntimeException("el Polinomioo no existe");
     }
-     return elemento ;
+     return Polinomioo ;
   }
       /**
    *  retorna la longitud actual maxima del array.
@@ -82,9 +82,9 @@ public class DynamicArray<T> implements DynamicArrayGen<T> {
   }
   
   public T popBack(){
-      T returnElement = this.get(n); 
+      T returnPolinomio = this.get(n); 
       n--; 
-      return returnElement; 
+      return returnPolinomio; 
   }
   
   public boolean isEmpty(){
