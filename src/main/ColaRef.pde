@@ -7,40 +7,56 @@
 public class RefQueue<T> implements  QueueGen<T> {
   private SingleNode front, rear;
   private int count;
-  
+
   //se crea una clase interna como explico el profesor para que solo la pila pueda acceder al nodo
-  
+
   private class SingleNode
   { 
     public T data;
     public SingleNode next;
   }
-  
-  
+
+
   public RefQueue() {
     front = null;
     rear= null;
     count = 0;
   }
   /**
-   *  saca un elemento.
+   *  saca un Polinomioo.
    *  Maneja Excepción de espacio.
    *  @param {}.
    *  @return{Type} - Éxito del proceso. 
    **/
   public T dequeue() {
-    T data = front.data;
-    front = front.next;
-    if (isEmpty()) 
-    {
+    if (isEmpty()) {
       rear = null;
       throw new RuntimeException("la cola esta vacia");
     }
+    T data = front.data;
+    front = front.next;
+
+
     count--;
     return data;
   }
+
+  public void deleteLast() { 
+    if (!this.isEmpty()) {
+      T e = this.dequeue();
+      this.enqueue(e); 
+      T e2 = null; 
+      while (this.peek() != e) {
+        e2 = this.dequeue(); 
+        if(this.peek() != e)
+        this.enqueue(e2); 
+      }
+      
+      
+    }
+  }
   /**
-   *  inserta un elemento.
+   *  inserta un Polinomioo.
    *  @param {Type}.
    *  @return{} -Exito del proceso. 
    **/
@@ -66,9 +82,9 @@ public class RefQueue<T> implements  QueueGen<T> {
   public boolean isEmpty() {
     return (count<=0);
   }
-  
-  public T peek(){
-     return front.data;  
+
+  public T peek() {
+    return front.data;
   }
   /**
    *  retorna si la cola esta "llena" al ser por listas nunca se llena.
@@ -79,9 +95,9 @@ public class RefQueue<T> implements  QueueGen<T> {
     return(false);
   }
   /**
-   *  retorna la cantidad de elementos en la cola.
+   *  retorna la cantidad de Polinomioos en la cola.
    *  @param {}.
-   *  @return{Intiger} -numero elementos en la cola. 
+   *  @return{Intiger} -numero Polinomioos en la cola. 
    **/
   public int numInside() {
     return count;

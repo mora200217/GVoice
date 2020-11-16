@@ -27,7 +27,7 @@ public class Queue<T> implements  QueueGen<T> {
     qarray = (T[]) new Object[N];
   }
   /**
-   *  saca un elemento.
+   *  saca un Polinomioo.
    *  Maneja Excepción de espacio.
    *  @param {}.
    *  @return{Type} - Éxito del proceso. 
@@ -44,7 +44,7 @@ public class Queue<T> implements  QueueGen<T> {
     return item;
   }
   /**
-   *  inserta un elemento.
+   *  inserta un Polinomioo.
    *  Maneja Excepción de espacio.
    *  @param {Type}.
    *  @return{} -Exito del proceso. 
@@ -80,9 +80,9 @@ public class Queue<T> implements  QueueGen<T> {
     return count >= qarray.length;
   }
   /**
-   *  retorna la cantidad de elementos en la cola.
+   *  retorna la cantidad de Polinomioos en la cola.
    *  @param {}.
-   *  @return{Intiger} -numero elementos en la cola. 
+   *  @return{Intiger} -numero Polinomioos en la cola. 
    **/
   public int numInside() {
     return count;

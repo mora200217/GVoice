@@ -22,7 +22,7 @@ public class Stack<T> implements  StackGen<T> {
     arr =(T[]) new Object[N];
   }
     /**
-   *  Revisa el elemento en top.
+   *  Revisa el Polinomioo en top.
    *  Maneja Excepción de espacio.
    *  @param {}.
    *  @return{Type} - Éxito del proceso. 
@@ -34,7 +34,7 @@ public class Stack<T> implements  StackGen<T> {
      return arr[numInside];
    }
   /**
-   *  saca un elemento.
+   *  saca un Polinomioo.
    *  Maneja Excepción de espacio.
    *  @param {}.
    *  @return{Type} - Éxito del proceso. 
@@ -47,7 +47,7 @@ public class Stack<T> implements  StackGen<T> {
     return arr[numInside];
   }
   /**
-   *  inserta un elemento.
+   *  inserta un Polinomioo.
    *  Maneja Excepción de espacio.
    *  @param {Type}.
    *  @return{} -Exito del proceso. 
@@ -68,9 +68,9 @@ public class Stack<T> implements  StackGen<T> {
     return numInside >= arr.length;
   }
   /**
-   *  retorna la cantidad de elementos en la cola.
+   *  retorna la cantidad de Polinomioos en la cola.
    *  @param {}.
-   *  @return{Intiger} -numero elementos en la cola. 
+   *  @return{Intiger} -numero Polinomioos en la cola. 
    **/
   public boolean empty() {
     return numInside <= 0;
