@@ -1,3 +1,4 @@
+
 /**
  * Polinomio ( Polinomio )
  * implementacion para obtener los puntos de un polinomio
@@ -6,7 +7,6 @@ public class Polinomio implements Element {
   private float[] coef;
   private int grado;
   private float delta=0;
-
   private boolean isNull = false; 
   public PVector pos=new PVector(0, 0);
   public Polinomio(int gradot) {
@@ -110,5 +110,11 @@ public class Polinomio implements Element {
     for (int i = 0; i <= b.grado; i++) {
       a.coef[i] += b.coef[i];
     }
+  }
+   public Polinomio derivate(){
+    float[] arrayaux = new float[grado];
+    for(int i = 1; i < grado+1;i++)
+      arrayaux[i-1] = coef[i]*i;
+    return new Polinomio(arrayaux,grado-1);
   }
 }
