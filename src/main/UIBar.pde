@@ -43,14 +43,16 @@ class UIBar {
           this.firstTime = false; 
           switch(this.id) {
           case 1:
-          if(!g.inScreenStack.empty()){
-            g.inScreenStack.pop().nullify();
-            g.generateImage();
-          }
+            if (!g.inScreenStack.empty()) {
+              g.inScreenStack.pop().nullify();
+              g.generateImage();
+            }
             break; 
 
           case 2: 
-
+            PImage newImage = createImage(100, 100, RGB);
+            newImage = get(50,0,width-50,height);
+            newImage.save("prueba.jpg");
 
             break; 
 
