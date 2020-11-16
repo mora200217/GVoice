@@ -3,7 +3,7 @@ float[] getInterval (float point,int radio,Polinomio pol){
   float xpoint = point - radio;
   lista_y = new float[(2*radio)-1];
   for(int i = 0; i<2*radio; i++){
-      lista_y[i] = pol.getY(xpoint);
+      lista_y[i] = pol.y(xpoint);
       xpoint += i;
   }
   return lista_y;
@@ -21,10 +21,8 @@ RefQueue<PVector> getPC(Polinomio pol, GraphController graph){
   float[] points = deripol.getPoints(graph);
   for(int i = 0;i < points.length;i++){
     aux.x = i-(graph.getDimension().x)/2;
-    aux.y = abs(deripol.getY(aux.x));
-    System.out.printf("Points: %.2f    ",points[i]);
-    System.out.printf("aux.x: %.2f, aux.y: %.2f\n",aux.x,aux.y);
-    h.insertItem(new PVector(i-(graph.getDimension().x)/2,abs(deripol.getY(aux.x))));
+    aux.y = abs(deripol.y(aux.x));
+    h.insertItem(new PVector(i-(graph.getDimension().x)/2,abs(deripol.y(aux.x))));
   }
   
   RefQueue<PVector> min;
@@ -36,7 +34,7 @@ RefQueue<PVector> getPC(Polinomio pol, GraphController graph){
   //}
   
   aux2 = h.removeMin();
-  while((aux2.y - 0) <= 0.4){
+  while((aux2.y - 0) <=(pol.grado*0.18)){
     min.enqueue(aux2);
     System.out.printf("removeMin ... aux.x: %.2f, aux.y: %.2f\n",aux2.x,aux2.y);
     aux2 = h.removeMin();
