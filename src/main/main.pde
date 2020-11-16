@@ -26,16 +26,6 @@ void setup() {
 
   grafica.setOrigin(width/2, height/2);
   gui = new UI(width, height, grafica); 
-  float [] hola={1, 1, 1};
-  Polinomio[] f2 = new Polinomio[val];
-  Polinomio f3=new Polinomio(3);
-
-  for (int i = 0; i < val; i++) {
-    f2[i] = new Polinomio(i+1);
-    grafica.addPolinomio(f2[i]);
-  }
-  grafica.addPolinomio(f3);
-  background(255);
   //print((millis()-count));
 //Heap h = new Heap(f3,grafica);
   //PVector p1 = new PVector(50.51,5.2);
@@ -73,22 +63,6 @@ void setup() {
   //print("Prueba (%.2f,%.2f)\n", aux.x,aux.y);
   //aux = h.removeMin();
   //print("Prueba (%.2f,%.2f)\n", aux.x,aux.y);
-  
-      
-  RefQueue<PVector> PC;
-  PVector temp;
-  grafica.addElement(f3);
-  if(f3.grado != 1){
-    PC = getPC(f3,grafica);
-    while(!PC.isEmpty()){
-      temp = PC.dequeue();
-      System.out.printf("Elipse ... aux.x: %.2f, aux.y: %.2f\n",temp.x+grafica.getDimension().x/2,f3.getY(temp.x)+grafica.getDimension().y/2);
-      fill(0,255,0);
-      ellipse(temp.x+grafica.getDimension().x/2,f3.getY(temp.x)+grafica.getDimension().y/2,100,100);
-    }
-  }  
-  
-  background(255);
   //print((millis()-count));
   grafica.setDimension(width, height);
 }
@@ -102,16 +76,14 @@ void UI() {
   b.update();
   b.draw(); 
 
-  float[] t = { random(0, 1) / 100, random(0, 1) / 100, random(0, 1) / 100}; 
-
-  Polinomio f3 = new Polinomio(t, 2);
-
-  float[] t2 = {0, -4, 0, 0.3};  
-  Polinomio f4 = new Polinomio(t2, 3); 
+  float[] t = { 0,2.4,-0.7,-0.43,0.05,0.02}; 
+  float[] t2 = { 0,2.4,-0.7}; 
+  Polinomio f3 = new Polinomio(t, 5);
+   Polinomio f4 = new Polinomio(t2, 2);
   // Agregar gráfica
   if ( b.isMousePressed() && toChange) {
-
-    grafica.addElement(f4);
+    grafica.addPolinomio(f4);
+    grafica.addPolinomio(f3);
     toChange = false;
   }
 }

@@ -2,7 +2,7 @@
  * Elipse ( Elipse )
  * implementacion para obtener los puntos de una ellipse
  */
-public class Elipse implements Polinomio {
+public class Elipse implements Element{
   //Declaración de variables funcionales tanto para la elipse como para el círculo 
   PVector centroide = new PVector(0, 0);
   private float radio_may = 1;
