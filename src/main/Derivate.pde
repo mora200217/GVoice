@@ -28,13 +28,8 @@ RefQueue<PVector> getPC(Polinomio pol, GraphController graph){
   RefQueue<PVector> min;
   PVector aux2;
   min = new RefQueue<PVector>();
-  //for(int g = 0; g < 20;g++){
-  //  aux2 = h.removeMin();
-  //  System.out.printf("removeMin ... aux.x: %.2f, aux.y: %.2f\n",aux2.x,aux2.y);
-  //}
-  
   aux2 = h.removeMin();
-  while((aux2.y - 0) <=(pol.grado*0.2)){
+  while((aux2.y - 0) <=pow(0.1, 1/pol.grado)){
     min.enqueue(aux2);
     System.out.printf("removeMin ... aux.x: %.2f, aux.y: %.2f\n",aux2.x,aux2.y);
     aux2 = h.removeMin();

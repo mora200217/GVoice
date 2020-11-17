@@ -4,7 +4,7 @@
  * implementacion para obtener los puntos de un polinomio
  */
 public class Polinomio implements Element {
-  private float[] coef;
+  public float[] coef;
   private int grado;
   private float delta=0;
   private color c; 

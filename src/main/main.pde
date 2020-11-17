@@ -77,27 +77,18 @@ void UI() {
   b.update();
   b.draw(); 
 
-
+   int n = floor(random(2,8));
+   float[] coeff = new float[n]; 
+   for(int i = 0; i < n; i ++){
+    coeff[i] = random(3, 80) / 200;  
+   }
+   
+   Polinomio f4 = new Polinomio(coeff, n - 1); 
+   
   // Agregar gráfica
   if ( b.isMousePressed() && toChange) {
-    // grafica.addPolinomio(f4);
-    // grafica.addPolinomio(f3);
-
-    GeneratorTest gt = new GeneratorTest();
-    gt.beginSample();
+    grafica.addPolinomio(f4);
     
-    for (int test = 1; test < 10000; test*= 10) {
-      Test2 t3 = new Test2(test + 5);
-
-
-      grafica.inScreen = t3.createSamples();
-
-
-      grafica.generateImage();
-      gt.step(); 
-    }
-    gt.endSample();
-    gt.createReport("txt"); 
     toChange = false;
   }
 }

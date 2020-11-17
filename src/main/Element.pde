@@ -8,4 +8,3 @@ interface Element{
     
     abstract public color getColor();  
    }
-
