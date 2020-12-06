@@ -8,8 +8,9 @@ class GraphController {
   private boolean rendering;  // Will render ? 
   private int MAX_GRAPHS_PER_CYCLE = 1;   
   private RefStack<Polinomio> inScreenStack; 
-  private float zoomVal=1
-    ;
+  private float zoomVal=1;
+  private boolean peticion=false;
+  private boolean peticionrec=false;
   public PGraphics imgToShow; 
   private boolean hasToGenerate = true; 
   // private PImage bg; 
@@ -99,7 +100,7 @@ class GraphController {
     pg.endShape();
     RefQueue<PVector> PC;
     PVector temp;
-    if (e.grado > 2) {
+    if (e.grado > 2 && peticion) {
       PC = getPC(e, this);
       while (!PC.isEmpty()) {
         temp = PC.dequeue();
