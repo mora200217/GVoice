@@ -82,22 +82,11 @@ void UI() {
   if ( b.isMousePressed() && toChange) {
     // grafica.addPolinomio(f4);
     // grafica.addPolinomio(f3);
-
-    GeneratorTest gt = new GeneratorTest();
-    gt.beginSample();
-    
-    for (int test = 0; test < 20; test++) {
-      Test2 t3 = new Test2(test + 5);
-
-
-      grafica.inScreen = t3.createSamples();
-
-
+      Test2 t3 = new Test2(1);
+      RefQueue <Polinomio>h= t3.createSamples();
+      Polinomio g=h.dequeue();
+      grafica.addPolinomio(g);
       grafica.generateImage();
-      gt.step(); 
-    }
-    gt.endSample();
-    gt.createReport("txt"); 
     toChange = false;
   }
 }
