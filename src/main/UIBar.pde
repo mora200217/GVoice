@@ -94,6 +94,7 @@ class UIBar {
     actions.add(new Action("prueba", "undo", 1));
     actions.add(new Action("as", "disk", 2));
     actions.add(new Action("as", "bin", 3));
+    actions.add(new Action("pc", "puntoc", 4));
   }
 
   void show() {
