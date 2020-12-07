@@ -22,7 +22,7 @@ UI gui;
 void setup() {
   // stt = new STT(this);  
   search = new Search();
-  File file = s.getDataFolder();
+  File file = search.getDataFolder();
   Desktop desktop = Desktop.getDesktop();  
   try{
   if (file.exists())         //checks file exists or not  
