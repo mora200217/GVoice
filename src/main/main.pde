@@ -1,3 +1,6 @@
+import websockets.*;
+
+WebsocketServer socket;
 
 String APP_NAME = "GVoice";  
 int keyVal = 0;  // 1 Ivan 2 Juanfer 3 Miguel 4 Morales
@@ -8,12 +11,14 @@ int count2 = 0;
 int val = 1;
 boolean toChange = true; 
 PGraphics image; 
+// WebsocketServer socket = new WebsocketServer(this, 1337, "/p5websocket");
 GeneratorTest test; 
-
+STT stt; 
 UI gui; 
 
 // -----------------------------------------
 void setup() {
+  // stt = new STT(this);  
 
   test = new GeneratorTest(); 
   //int count = millis();
@@ -21,50 +26,13 @@ void setup() {
   size(900, 500);
   ui = createGraphics(40, 40);
   surface.setTitle(APP_NAME);
-  surface.setResizable(true); 
+  surface.setResizable(false); 
   grafica = new  GraphController(width, height);
 
   grafica.setOrigin(width/2, height/2);
   gui = new UI(width, height, grafica); 
-  //print((millis()-count));
-  //Heap h = new Heap(f3,grafica);
-  //PVector p1 = new PVector(50.51,5.2);
-  //h.insertItem(p1);
-  //PVector p2 = new PVector(34.5,2);
-  //h.insertItem(p2);
-  //PVector p3 = new PVector(15,1);
-  //h.insertItem(p3);
-  //PVector p4 = new PVector(50.51,10);
-  //h.insertItem(p4);
-  //PVector p5 = new PVector(5,5,3);
-  //h.insertItem(p5);
-  //PVector p6 = new PVector(10,0);
-  //h.insertItem(p6);
-  //PVector p7 = new PVector(16,8);
-  //h.insertItem(p7);
-  //PVector p8 = new PVector(1,7);
-  //h.insertItem(p8);
-  //PVector p9 = new PVector(-1,50);
-  //h.insertItem(p9);
-  //PVector p10 = new PVector(2,4);
-  //h.insertItem(p10);
-  //PVector aux;
-  //aux = h.removeMin();
-  //print("Prueba (%.2f,%.2f)\n", aux.x,aux.y);
-  //aux = h.removeMin();
-  //print("Prueba (%.2f,%.2f)\n", aux.x,aux.y);
-  //aux = h.removeMin();
-  //print("Prueba (%.2f,%.2f)\n", aux.x,aux.y);
-  //aux = h.removeMin();
-  //print("Prueba (%.2f,%.2f)\n", aux.x,aux.y);
-  //aux = h.removeMin();
-  //print("Prueba (%.2f,%.2f)\n", aux.x,aux.y);
-  //aux = h.removeMin();
-  //print("Prueba (%.2f,%.2f)\n", aux.x,aux.y);
-  //aux = h.removeMin();
-  //print("Prueba (%.2f,%.2f)\n", aux.x,aux.y);
-  //print((millis()-count));
   grafica.setDimension(width, height);
+  socket = new WebsocketServer(this, 1337, "/p5websocket");
 }
 // -----------------------------------------
 
@@ -77,18 +45,18 @@ void UI() {
   b.update();
   b.draw(); 
 
-   int n = floor(random(2,8));
-   float[] coeff = new float[n]; 
-   for(int i = 0; i < n; i ++){
-    coeff[i] = random(3, 80) / 200;  
-   }
-   
-   Polinomio f4 = new Polinomio(coeff, n - 1); 
-   
+  int n = floor(random(2, 8));
+  float[] coeff = new float[n]; 
+  for (int i = 0; i < n; i ++) {
+    coeff[i] = random(3, 80) / 200;
+  }
+
+  Polinomio f4 = new Polinomio(coeff, n - 1); 
+
   // Agregar gráfica
   if ( b.isMousePressed() && toChange) {
     grafica.addPolinomio(f4);
-    
+
     toChange = false;
   }
 }
@@ -129,4 +97,21 @@ void mouseReleased() {
 
 void mouseDragged() {
   // grafica.generateImage();
+}
+
+
+void webSocketServerEvent(String msg) {
+    if (grafica.peticionrec){
+      String[] strings = msg.split(" ");
+      println(msg);
+      for (String s: strings){
+        println("Valor: " + s);
+        if (s == "graficar" ||s == "grafica"||s == "graph"){
+          println("Agregado"); 
+          grafica.addPolinomio(new Polinomio(2)); 
+          grafica.generateImage(); 
+        }
+    }
+    }
+  
 }

@@ -63,69 +63,68 @@ class UIBar {
             break;
 
           case 4: 
-
             g.peticion =!g.peticion;
 
             break;
-            case 5: 
 
-            g.peticionrec =true;
+          case 5: 
 
+            g.peticionrec = !g.peticionrec;
+            println("Cambiando peticion rec...");
             break;
           }
-        
+        }
+      } else {
+        iconToshow = this.iconEffect;
+        cursor(ARROW);
       }
-    } else {
-  iconToshow = this.iconEffect;
-  cursor(ARROW);
-}
-image(iconToshow, this.pos.x, this.pos.y, this.dim.x, this.dim.y);
-}
+      image(iconToshow, this.pos.x, this.pos.y, this.dim.x, this.dim.y);
+    }
 
-void setPos(float x, float y) {
-  //if (!(this.pos.x == x && this.pos.y == y)){
-  this.pos.mult(0).add(x, y);  
-  //}
-}
-}
-private color c;
-private PVector pos; // Abscisa y ordenada 
-private PVector dim; // Ancho y alto 
-private boolean visible; 
-private ArrayList<Action> actions; 
-public GraphController g; 
-UIBar(float w, float h, GraphController g) {
-  this.g = g; 
-  this.visible = true; 
-  this.c = color(255, 24, 25); 
-  this.pos = new PVector(0, 0);
-  this.dim = new PVector(50, h);
-  actions = new ArrayList<Action>();
-
-  actions.add(new Action("prueba", "logo", 0));
-  actions.add(new Action("prueba", "undo", 1));
-  actions.add(new Action("as", "disk", 2));
-  actions.add(new Action("as", "bin", 3));
-  actions.add(new Action("pc", "puntoc", 4));
-  actions.add(new Action("mic", "mic2", 5));
-}
-
-void show() {
-  noStroke();
-  fill(#3D4C62); 
-  rect(this.pos.x, this.pos.y, this.dim.x, this.dim.y);
-
-  float offset = 40;
-  float xPos = this.pos.x + 0.5 * ( this.dim.x );
-  float yPos = 20; 
-  for (int i = 0; i < actions.size(); i++) {
-
-    Action a = actions.get(i);
-    println((i +1) + " Action: " + a.name + " " + yPos);
-    a.setPos(xPos, yPos);
-
-    a.show(this.g);
-    yPos += offset;
+    void setPos(float x, float y) {
+      //if (!(this.pos.x == x && this.pos.y == y)){
+      this.pos.mult(0).add(x, y);  
+      //}
+    }
   }
-}
+  private color c;
+  private PVector pos; // Abscisa y ordenada 
+  private PVector dim; // Ancho y alto 
+  private boolean visible; 
+  private ArrayList<Action> actions; 
+  public GraphController g; 
+  UIBar(float w, float h, GraphController g) {
+    this.g = g; 
+    this.visible = true; 
+    this.c = color(255, 24, 25); 
+    this.pos = new PVector(0, 0);
+    this.dim = new PVector(50, h);
+    actions = new ArrayList<Action>();
+
+    actions.add(new Action("prueba", "logo", 0));
+    actions.add(new Action("prueba", "undo", 1));
+    actions.add(new Action("as", "disk", 2));
+    actions.add(new Action("as", "bin", 3));
+    actions.add(new Action("pc", "puntoc", 4));
+    actions.add(new Action("mic", "mic2", 5));
+  }
+
+  void show() {
+    noStroke();
+    fill(#3D4C62); 
+    rect(this.pos.x, this.pos.y, this.dim.x, this.dim.y);
+
+    float offset = 40;
+    float xPos = this.pos.x + 0.5 * ( this.dim.x );
+    float yPos = 20; 
+    for (int i = 0; i < actions.size(); i++) {
+
+      Action a = actions.get(i);
+      // println((i +1) + " Action: " + a.name + " " + yPos);
+      a.setPos(xPos, yPos);
+
+      a.show(this.g);
+      yPos += offset;
+    }
+  }
 }
