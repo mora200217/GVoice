@@ -1,12 +1,12 @@
-public class Hash {
+public static class Hash {
   int dato;
   int estado; //0 = Vacío, 1 = Eliminado, 2 = Ocupado
 
-  int funcion(int n, int m) {
+  static int funcion(int n, int m) {
     return ((n + 1) % m);
   }
 
-  void insertaHash(Hash[] h, int m, int n) {
+  static  void insertaHash(Hash[] h, int m, int n) {
     boolean i = false;
     int j = funcion(n, m);
     do {
@@ -25,7 +25,7 @@ public class Hash {
     }
   }
 
-  int buscaHash(Hash[] h, int m, int n) {
+ static int buscaHash(Hash[] h, int m, int n) {
     int j = funcion(n, m);
     while (j < m) {
       if (h[j].estado == 0) {
@@ -43,7 +43,7 @@ public class Hash {
     return -1;
   }
 
-  int eliminaHash(Hash[] h, int m, int n) {
+ static  int eliminaHash(Hash[] h, int m, int n) {
     int i = buscaHash(h, m, n);
     if (i == -1) {
       return -1;
