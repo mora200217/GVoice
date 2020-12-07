@@ -19,6 +19,7 @@ class Screen {
     noStroke();
     drawScreen(input);
     pop();
+    input.replace(" ","");
   }
   void drawScreen(String a) {
     strokeWeight(2);
