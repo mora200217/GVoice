@@ -9,8 +9,8 @@ class GraphController {
   private int MAX_GRAPHS_PER_CYCLE = 1;   
   private RefStack<Polinomio> inScreenStack; 
   private float zoomVal=1;
-  private boolean peticion=false;
-  private boolean peticionrec=false;
+  public boolean peticion=false;
+  public boolean peticionrec=false;
   public PGraphics imgToShow; 
   private boolean hasToGenerate = true; 
   // private PImage bg; 
