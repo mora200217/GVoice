@@ -106,7 +106,9 @@ void webSocketServerEvent(String msg) {
       println(msg);
       for (String s: strings){
         println("Valor: " + s);
-        if (s == "graficar" ||s == "grafica"||s == "graph"){
+        // Hash v: -----------
+
+        if (s.compareTo("graficar") == 0 ||s.compareTo("grafica") == 0||s.compareTo("graph") == 0){
           println("Agregado"); 
           grafica.addPolinomio(new Polinomio(2)); 
           grafica.generateImage(); 
