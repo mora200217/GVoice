@@ -1,55 +1,71 @@
-public class Hash {
-  int dato;
-  int estado; //0 = Vacío, 1 = Eliminado, 2 = Ocupado
+// of Rabin Karp Algorithm given in the CLRS book 
 
-  int funcion(int n, int m) {
-    return ((n + 1) % m);
-  }
+public static class Hash  
+{ 
 
-  void insertaHash(Hash[] h, int m, int n) {
-    boolean i = false;
-    int j = funcion(n, m);
-    do {
-      if (h[j].estado == 0 || h[j].estado == 1) {
-        h[j].dato = n;
-        h[j].estado = 2;
-        i = true;
-      } else {
-        j++;
+  // d is the number of characters in the input alphabet 
+  public final static int d = 256; 
+
+  /* pat -> pattern 
+   txt -> text 
+   q -> A prime number 
+   */
+  static Boolean search(String pat, String txt, int q) 
+  { 
+    int M = pat.length(); 
+    int N = txt.length(); 
+    int i, j; 
+    int p = 0; // hash value for pattern 
+    int t = 0; // hash value for txt 
+    int h = 1; 
+    boolean bandera= false;
+
+    // The value of h would be "pow(d, M-1)%q" 
+    for (i = 0; i < M-1; i++) 
+      h = (h*d)%q; 
+
+    // Calculate the hash value of pattern and first 
+    // window of text 
+    for (i = 0; i < M; i++) 
+    { 
+      p = (d*p + pat.charAt(i))%q; 
+      t = (d*t + txt.charAt(i))%q;
+    } 
+
+    // Slide the pattern over text one by one 
+    for (i = 0; i <= N - M; i++) 
+    { 
+
+      // Check the hash values of current window of text 
+      // and pattern. If the hash values match then only 
+      // check for characters on by one 
+      if ( p == t ) 
+      { 
+        /* Check for characters one by one */
+        for (j = 0; j < M; j++) 
+        { 
+          if (txt.charAt(i+j) != pat.charAt(j)) 
+            break;
+        } 
+
+        // if p == t and pat[0...M-1] = txt[i, i+1, ...i+M-1] 
+        if (j == M) 
+
+          bandera=true;
+      } 
+
+      // Calculate hash value for next window of text: Remove 
+      // leading digit, add trailing digit 
+      if ( i < N-M ) 
+      { 
+        t = (d*(t - txt.charAt(i)*h) + txt.charAt(i+M))%q; 
+
+        // We might get negative value of t, converting it 
+        // to positive 
+        if (t < 0) 
+          t = (t + q);
       }
-    } while (j < m && !i);
-    if (i) {
-      javax.swing.JOptionPane.showMessageDialog(null, "¡Elemento insertado con éxito!");
-    } else {
-      javax.swing.JOptionPane.showMessageDialog(null, "¡Tabla llena!");
-    }
-  }
-
-  int buscaHash(Hash[] h, int m, int n) {
-    int j = funcion(n, m);
-    while (j < m) {
-      if (h[j].estado == 0) {
-        return -1;
-      } else if (h[j].dato == n) {
-        if (h[j].estado == 1) {
-          return -1;
-        } else {
-          return j;
-        }
-      } else {
-        j++;
-      }
-    }
-    return -1;
-  }
-
-  int eliminaHash(Hash[] h, int m, int n) {
-    int i = buscaHash(h, m, n);
-    if (i == -1) {
-      return -1;
-    } else {
-      h[i].estado = 1;
-      return 1;
-    }
-  }
-}
+    } 
+    return bandera;
+  }  
+} 

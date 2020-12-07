@@ -13,6 +13,7 @@ int val = 1;
 boolean toChange = true; 
 PGraphics image; 
 Search search;
+boolean bandera=false;
 // WebsocketServer socket = new WebsocketServer(this, 1337, "/p5websocket");
 GeneratorTest test; 
 STT stt; 
@@ -20,15 +21,16 @@ UI gui;
 
 // -----------------------------------------
 void setup() {
-  // stt = new STT(this);  
+  // stt = new STT(this);
   search = new Search();
-  File file = s.getDataFolder();
+  File file = search.getDataFolder();
   Desktop desktop = Desktop.getDesktop();  
-  try{
-  if (file.exists())         //checks file exists or not  
-    desktop.open(file);              //opens the specified file
-  }catch(Exception e){
-    println("F"); 
+  try {
+    if (file.exists())         //checks file exists or not  
+      desktop.open(file);              //opens the specified file
+  }
+  catch(Exception e) {
+    println("F");
   }
   search.getDataFolder(); 
   test = new GeneratorTest(); 
@@ -112,19 +114,43 @@ void mouseDragged() {
 
 
 void webSocketServerEvent(String msg) {
-    if (grafica.peticionrec){
+  println(msg);
+  int primo=9973;
+
+  if (grafica.peticionrec) {
+    //msg tiene que pasar por el hash
+    if (bandera) {
       String[] strings = msg.split(" ");
-      println(msg);
-      for (String s: strings){
-        println("Valor: " + s);
-        // Hash v: -----------
-        
-        if (s.compareTo("graficar") == 0 ||s.compareTo("grafica") == 0||s.compareTo("graph") == 0){
-          println("Agregado"); 
-          grafica.addPolinomio(new Polinomio(2)); 
-          grafica.generateImage(); 
-        }
-    }
-    }
-  
+      float[] coef=new float[strings.length];
+      int conta=0;
+      for (String s : strings) {
+        coef[conta]=float(s+1);
+        conta++;
+      }
+      for(int ja=0;ja<coef.length;ja++)
+        println(coef[ja]);
+        grafica.addPolinomio(new Polinomio(coef, coef.length-1));
+        grafica.generateImage();
+        bandera=false;
+        grafica.peticionrec=false;
+      } else if (Hash.search("grap", msg, primo)||Hash.search("graf", msg, primo) ) {
+  bandera =true;
+  println("dime los coeficientes");
+}
+
+println(bandera);
+/*
+      String[] strings = msg.split(" ");
+ println(msg);
+ for (String s: strings){
+ println("Valor: " + s);
+ // Hash v: -----------
+ 
+ if (s.compareTo("graficar") == 0 ||s.compareTo("grafica") == 0||s.compareTo("graph") == 0){
+ println("Agregado"); 
+ grafica.addPolinomio(new Polinomio(2)); 
+ grafica.generateImage(); 
+ }
+ */
+}
 }
