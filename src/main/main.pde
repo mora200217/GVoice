@@ -1,6 +1,7 @@
 import websockets.*;
 
 WebsocketServer socket;
+import java.awt.Desktop;  
 
 String APP_NAME = "GVoice";  
 int keyVal = 0;  // 1 Ivan 2 Juanfer 3 Miguel 4 Morales
@@ -11,6 +12,7 @@ int count2 = 0;
 int val = 1;
 boolean toChange = true; 
 PGraphics image; 
+Search search;
 // WebsocketServer socket = new WebsocketServer(this, 1337, "/p5websocket");
 GeneratorTest test; 
 STT stt; 
@@ -19,7 +21,16 @@ UI gui;
 // -----------------------------------------
 void setup() {
   // stt = new STT(this);  
-
+  search = new Search();
+  File file = s.getDataFolder();
+  Desktop desktop = Desktop.getDesktop();  
+  try{
+  if (file.exists())         //checks file exists or not  
+    desktop.open(file);              //opens the specified file
+  }catch(Exception e){
+    println("F"); 
+  }
+  search.getDataFolder(); 
   test = new GeneratorTest(); 
   //int count = millis();
   val = 0;
@@ -107,7 +118,7 @@ void webSocketServerEvent(String msg) {
       for (String s: strings){
         println("Valor: " + s);
         // Hash v: -----------
-
+        
         if (s.compareTo("graficar") == 0 ||s.compareTo("grafica") == 0||s.compareTo("graph") == 0){
           println("Agregado"); 
           grafica.addPolinomio(new Polinomio(2)); 
