@@ -12,6 +12,9 @@ public static class Hash
    */
   static Boolean search(String pat, String txt, int q) 
   { 
+    if (pat.length() > txt.length())
+      return false; 
+      
     int M = pat.length(); 
     int N = txt.length(); 
     int i, j; 

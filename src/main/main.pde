@@ -16,12 +16,23 @@ Search search;
 boolean bandera=false;
 // WebsocketServer socket = new WebsocketServer(this, 1337, "/p5websocket");
 GeneratorTest test; 
+HeapSet dibujar, eliminar, deshacer; 
 STT stt; 
 UI gui; 
 
 // -----------------------------------------
 void setup() {
-  // stt = new STT(this);
+  dibujar = new HeapSet();
+  eliminar = new HeapSet();
+  deshacer = new HeapSet();
+
+  //---
+  dibujar.add("graf", 3);
+  dibujar.add("graph", 2);
+  dibujar.add("dibujar", 2);
+  dibujar.add("pintar", 1);
+  dibujar.add("trazar", 1);
+  //---
   search = new Search();
   File file = search.getDataFolder();
   Desktop desktop = Desktop.getDesktop();  
@@ -127,30 +138,63 @@ void webSocketServerEvent(String msg) {
         coef[conta]=float(s+1);
         conta++;
       }
-      for(int ja=0;ja<coef.length;ja++)
+      for (int ja=0; ja<coef.length; ja++)
         println(coef[ja]);
-        grafica.addPolinomio(new Polinomio(coef, coef.length-1));
-        grafica.generateImage();
-        bandera=false;
-        grafica.peticionrec=false;
-      } else if (Hash.search("grap", msg, primo)||Hash.search("graf", msg, primo) ) {
-  bandera =true;
-  println("dime los coeficientes");
-}
+      grafica.addPolinomio(new Polinomio(coef, coef.length-1));
+      grafica.generateImage();
+      bandera=false;
+      grafica.peticionrec=false;
+    } else {
+      boolean found = false; 
+      int count = 0; 
+      while (count <= 4 &&dibujar.count <= dibujar.total && !found) {
+        count ++; 
+        Word h = dibujar.get(); 
+        while (count <= dibujar.total - 1) {
+          println("Pasando por: " + h.data); 
+          if (count >= 4) {
+            println("No se encontró"); 
+            dibujar.change(); 
+            break;
+          } else if (Hash.search(h.data, msg, primo)) {
+            h.weight++;
+            dibujar.addToSecond(h);
+            dibujar.update(); 
+            println("Encontrado");
+            
+            found = bandera = true; 
+            break;
+          } else {
+             count++;  
+            dibujar.addToSecond(h);
+            h = dibujar.get();
+          }
+        }
+        if (dibujar.count >= dibujar.total) {
+          bandera =false;
+          dibujar.update();
+        } else {
+          println("dime los coeficientes");
+          // bandera = true;
+        }
 
-println(bandera);
-/*
+        dibujar.count = 0;
+      }
+    }
+
+    println(bandera);
+    /*
       String[] strings = msg.split(" ");
- println(msg);
- for (String s: strings){
- println("Valor: " + s);
- // Hash v: -----------
- 
- if (s.compareTo("graficar") == 0 ||s.compareTo("grafica") == 0||s.compareTo("graph") == 0){
- println("Agregado"); 
- grafica.addPolinomio(new Polinomio(2)); 
- grafica.generateImage(); 
- }
- */
-}
+     println(msg);
+     for (String s: strings){
+     println("Valor: " + s);
+     // Hash v: -----------
+     
+     if (s.compareTo("graficar") == 0 ||s.compareTo("grafica") == 0||s.compareTo("graph") == 0){
+     println("Agregado"); 
+     grafica.addPolinomio(new Polinomio(2)); 
+     grafica.generateImage(); 
+     }
+     */
+  }
 }
