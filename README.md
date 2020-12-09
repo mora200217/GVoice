@@ -59,7 +59,7 @@ Representar cualquier grafica 2D propia de las matemáticas a travéz de comando
 
 # Requisitos
 
-Para el desarrollo de este proyecto de hace uso de [Processing](https://processing.org/) el cual está basado en Java, adicional a esto la plataforma en donde se puede hacer uso de esta aplicación está restringida por el momento a entornos de escritorio.
+Para el desarrollo de este proyecto de hace uso de [Processing](https://processing.org/) y de la libreria de websokets el cual está basado en Java, adicional a esto la plataforma en donde se puede hacer uso de esta aplicación está restringida por el momento a entornos de escritorio.
 
 # Trabajo Futuro
 
