@@ -135,7 +135,7 @@ void webSocketServerEvent(String msg) {
       float[] coef=new float[strings.length];
       int conta=0;
       for (String s : strings) {
-        coef[conta]=float(s+1);
+        coef[conta]= s.compareTo(" ") == 0 ? 0 : float(0 + s)  ; // v: ;
         conta++;
       }
       for (int ja=0; ja<coef.length; ja++)

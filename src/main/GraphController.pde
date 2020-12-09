@@ -183,7 +183,7 @@ class GraphController {
 
       finalPos.normalize().mult(10).add(actual);
 
-      System.out.printf("x: %.2f, y: %.2f\n", finalPos.x, finalPos.y);
+      // System.out.printf("x: %.2f, y: %.2f\n", finalPos.x, finalPos.y);
       this.axis.setOrigin(finalPos.x, finalPos.y);
     }
   }
